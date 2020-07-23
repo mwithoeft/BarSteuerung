@@ -1,0 +1,4 @@
+/usr/local/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/pi/development/backend
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/pi/development/backend/cmake-build-debug

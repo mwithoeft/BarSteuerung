@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/development/backend/RestServer.cpp
+header/RestServer.h
+/home/pi/development/backend/header/RestServer.h
+
+/home/pi/development/backend/header/RestServer.h
+memory
+-
+cstdlib
+-
+restbed
+-
+
+/home/pi/development/backend/main.cpp
+iostream
+-
+restbed
+-
+header/RestServer.h
+/home/pi/development/backend/header/RestServer.h
+
