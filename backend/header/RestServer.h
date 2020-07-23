@@ -5,9 +5,12 @@
 #include <cstdlib>
 #include <restbed>
 
+
+#include "LedController.h"
+
 class RestServer {
 public:
-    RestServer();
+    RestServer(LedController*);
     ~RestServer();
 
     bool init();
@@ -18,6 +21,7 @@ private:
     const int PORT = 7979;
 
     restbed::Service* service;
+    LedController* ledController;
 
     std::shared_ptr<restbed::Resource> testResource;
     std::shared_ptr<restbed::Settings> settings;

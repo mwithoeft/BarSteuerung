@@ -84,13 +84,64 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/pi/development/backend/RestServer.cpp">
+		<Unit filename="/home/pi/development/backend/header/LedController.h">
 			<Option target="backend"/>
 		</Unit>
 		<Unit filename="/home/pi/development/backend/header/RestServer.h">
 			<Option target="backend"/>
 		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/color.h">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/colorpalettes.cpp">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/colorpalettes.h">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/colorutils.cpp">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/colorutils.h">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/fastled_progmem.h">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/hsv2rgb.cpp">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/hsv2rgb.h">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/lib8tion.cpp">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/lib8tion.h">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/noise.cpp">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/noise.h">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/FastLED/pixeltypes.h">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/PiLED.cpp">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/lib/PiLED/PiLED.h">
+			<Option target="backend"/>
+		</Unit>
 		<Unit filename="/home/pi/development/backend/main.cpp">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/src/LedController.cpp">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/src/RestServer.cpp">
 			<Option target="backend"/>
 		</Unit>
 		<Unit filename="/home/pi/development/backend/CMakeLists.txt">

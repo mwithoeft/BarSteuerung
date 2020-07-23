@@ -1,7 +1,7 @@
-#include "header/RestServer.h"
+#include "../header/RestServer.h"
 
 
-RestServer::RestServer() {
+RestServer::RestServer(LedController* ledController) : ledController(ledController) {
     service = new restbed::Service();
 }
 
@@ -10,7 +10,6 @@ RestServer::~RestServer() {
 }
 
 bool RestServer::init() {
-
     testResource = std::make_shared<restbed::Resource>();
     testResource->set_path("/test");
     testResource->set_method_handler("GET", test_handler);
@@ -27,6 +26,8 @@ void RestServer::start(void (*ready_handler)(restbed::Service&)) {
 
     service->set_ready_handler(ready_handler);
     service->start(settings);
+
+
 }
 
 void RestServer::test_handler(const std::shared_ptr<restbed::Session> session) {
