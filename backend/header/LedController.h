@@ -3,8 +3,6 @@
 
 #include <mutex>
 
-#include "../lib/PiLED/PiLED.h"
-
 
 class LedController {
 
@@ -12,14 +10,14 @@ public:
     LedController();
     ~LedController();
 
+    bool init();
+
     [[noreturn]] void loop();
 
 private:
-    static const int NUM_LEDS = 60;
-    CRGB leds[NUM_LEDS];
-    PiLED* piLED;
 
-    std::mutex mutex;
+
+
 };
 
 

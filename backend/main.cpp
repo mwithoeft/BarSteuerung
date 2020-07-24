@@ -10,17 +10,10 @@ void ready_handler(restbed::Service&) {
 }
 
 int main() {
-    std::cout << "[INFO] Setting up WiringPi..." << std::endl;
-    if (wiringPiSetup() != 0) {
-        std::cerr << "[ERROR] WiringPi setup failed..." << std::endl;
-        return EXIT_FAILURE;
-    }
-    std::cout << "[INFO] WiringPi setup successful." << std::endl << std::endl;
-
 
     std::cout << "[INFO] Starting LedController thread..." << std::endl;
     LedController ledController;
-    //init
+    ledController.init();
     std::thread ledThread(&LedController::loop, &ledController);
     std::cout << "[INFO] LedController thread started." << std::endl << std::endl;
 

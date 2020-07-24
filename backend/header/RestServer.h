@@ -26,8 +26,7 @@ private:
     std::shared_ptr<restbed::Resource> testResource;
     std::shared_ptr<restbed::Settings> settings;
 
-    static void test_handler(std::shared_ptr<restbed::Session >);
-
+    static void test_handler(std::shared_ptr<restbed::Session>);
 };
 
 
