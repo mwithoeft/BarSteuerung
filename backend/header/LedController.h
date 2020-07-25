@@ -2,6 +2,7 @@
 #define BACKEND_LEDCONTROLLER_H
 
 #include <mutex>
+#include <vector>
 
 #include "../lib/ws281x/ws281x.hpp"
 
@@ -17,7 +18,9 @@ public:
         OFF,
         STATIC_COLOR,
         RAINBOW_STATIC,
-        RAINBOW_FLOATING
+        RAINBOW_FLOATING,
+        SPLIT_STATIC,
+        SPLIT_FLOATING
     };
 
 
@@ -29,26 +32,33 @@ public:
 
     /** Setter **/
     void setColor(unsigned char, unsigned char, unsigned char);
-    void setColor2(unsigned char, unsigned char, unsigned char);
     void setPattern(Pattern);
+    void clearUserColors();
+    void addUserColor(Color);
 
 private:
     std::mutex mutex;
 
+    std::vector<Color> userColors;
+
     /** LED Settings **/
     ws281x::TSPIDriver* spi_dev_1;
-    static const unsigned n_pixels = 300;
-    ws281x::TWS2812B arr_pixels[n_pixels];
+    static const unsigned N_PIXELS = 300;
+    ws281x::TWS2812B arr_pixels[N_PIXELS];
     void flush();
     Color color{0, 0, 0};
-    Color color2{0, 0, 0};
+    std::vector<Color> colorVector;
     bool patternChanged = true;
+    bool firstPatternRun = true;
+    void shift();
 
     /** Color methods **/
     void staticColor();
     void off();
     void rainbowStatic();
     void rainbowFloating();
+    void splitStatic();
+    void splitFloating();
 
     /** Funktionspointer **/
     void (LedController::*patternMethod)();

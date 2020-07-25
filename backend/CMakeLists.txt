@@ -14,3 +14,4 @@ add_executable(backend main.cpp header/RestServer.h src/RestServer.cpp header/Le
 target_link_libraries(backend -lwiringPi)
 target_link_libraries(backend -lrestbed)
 target_link_libraries(backend -lpthread)
+target_link_libraries(backend -lbcm2835)

@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/backend.dir/main.cpp.o CMakeFiles/backend.dir/src/RestServer.cpp.o CMakeFiles/backend.dir/src/LedController.cpp.o CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o -o backend  -lwiringPi -lrestbed -lpthread 
+/usr/bin/c++ -g CMakeFiles/backend.dir/main.cpp.o CMakeFiles/backend.dir/src/RestServer.cpp.o CMakeFiles/backend.dir/src/LedController.cpp.o CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o -o backend  -lwiringPi -lrestbed -lpthread -lbcm2835 

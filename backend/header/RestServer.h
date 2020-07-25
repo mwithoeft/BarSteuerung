@@ -27,12 +27,18 @@ private:
     std::shared_ptr<restbed::Resource> offResource;
     std::shared_ptr<restbed::Resource> rainbowStaticResource;
     std::shared_ptr<restbed::Resource> rainbowFloatingResource;
+    std::shared_ptr<restbed::Resource> splitStaticResource;
+    std::shared_ptr<restbed::Resource> splitFloatingResource;
+
+
     std::shared_ptr<restbed::Settings> settings;
 
     static void static_color_handler(std::shared_ptr<restbed::Session >);
     static void off_handler(std::shared_ptr<restbed::Session >);
     static void rainbow_static_handler(std::shared_ptr<restbed::Session >);
     static void rainbow_floating_handler(std::shared_ptr<restbed::Session >);
+    static void split_static_handler(std::shared_ptr<restbed::Session >);
+    static void split_floating_handler(std::shared_ptr<restbed::Session >);
 
 };
 

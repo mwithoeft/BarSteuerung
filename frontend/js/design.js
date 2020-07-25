@@ -1,15 +1,21 @@
 $(document).ready(function () {
     $('.collapsible').collapsible();
+    $('.tabs').tabs();
 });
 
-var colorPickerFront = new iro.ColorPicker("#colorpicker_front", {
+var colorPickerStaticColor = new iro.ColorPicker("#colorpicker_static_color", {
     width: 320,
     color: "#f00"
 });
 
-colorPickerFront.on('input:end', function (color) {
-    console.log(color.rgb.r);
-    console.log(color.rgb.g);
-    console.log(color.rgb.b);
+colorPickerStaticColor.on('input:end', function (color) {
+    let request = `${address}staticColor?r=${color.rgb.r}&g=${color.rgb.g}&b=${color.rgb.b}`;
+    $.ajax({
+        url: request,
+        type: 'GET',
+        error: function (res) {
+            console.log(res);
+            M.toast({html: 'Fehler!'})
+        }
+    });
 });
-

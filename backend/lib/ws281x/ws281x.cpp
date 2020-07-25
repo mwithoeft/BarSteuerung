@@ -15,7 +15,7 @@ namespace ws281x
 		struct spi_ioc_transfer xfer_cmd;
 		memset(&xfer_cmd, 0, sizeof(xfer_cmd));
 
-		xfer_cmd.tx_buf = (size_t)buffer;
+        xfer_cmd.tx_buf = (size_t)buffer;
 		xfer_cmd.len = n_bytes;
 		xfer_cmd.delay_usecs = 0;
 		xfer_cmd.speed_hz = this->hz_speed;
@@ -34,5 +34,5 @@ namespace ws281x
 		if(close(this->fd) == -1)
 			perror("TSPIDriver::~TSPIDriver: failed to close handle to spidev");
 	}
-}
 
+}

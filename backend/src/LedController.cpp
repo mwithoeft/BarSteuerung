@@ -1,4 +1,6 @@
 #include <iostream>
+#include <thread>
+#include <algorithm>
 
 #include "../header/LedController.h"
 #include "../header/ColorConverter.h"
@@ -20,6 +22,7 @@ void LedController::loop(){
             ((*this).*patternMethod)();
         flush();
         mutex.unlock();
+        std::this_thread::sleep_for(std::chrono::milliseconds (10));
     }
 }
 
@@ -30,30 +33,58 @@ void LedController::flush(){
 
 /** Color methods **/
 void LedController::staticColor() {
-    for(unsigned i = 0; i < n_pixels; i++)
+    for(unsigned i = 0; i < N_PIXELS; i++)
         arr_pixels[i].RGB(color.red, color.green, color.blue);
     patternChanged = false;
 }
 void LedController::off(){
-    for(unsigned i = 0; i < n_pixels; i++)
+    for(unsigned i = 0; i < N_PIXELS; i++)
         arr_pixels[i].RGB(0,0,0);
     patternChanged = false;
 }
 void LedController::rainbowStatic(){
+    colorVector.clear();
     static unsigned char r,g,b;
-    unsigned winkel;
-    for (unsigned a = 0;a<n_pixels;a++) {
+    unsigned angle;
+    for (unsigned a = 0;a<N_PIXELS;a++) {
         //Berechnung des Winkels für die Anzahl der LEDs
-        winkel = (359/n_pixels)*a;
-        winkel += ((359/(n_pixels))/100);
-        if(winkel>359) winkel-=359;
-        Color color = colorConverter.hsvToRgb(winkel,100,100);
+        angle = (359/N_PIXELS)*a;
+        angle += ((359/(N_PIXELS))/100);
+        if(angle>359) angle-=359;
+        Color color = colorConverter.hsvToRgb(angle,100,100);
         arr_pixels[a].RGB(color.red, color.green, color.blue);
+        colorVector.push_back(color);
     }
     patternChanged = false;
 }
 void LedController::rainbowFloating() {
-
+    if (firstPatternRun) {
+        rainbowStatic();
+        firstPatternRun = false;
+        patternChanged = true;
+    }
+    shift();
+}
+void LedController::splitStatic() {
+    colorVector.clear();
+    unsigned length = N_PIXELS/userColors.size();
+    auto color = userColors.begin();
+    for (unsigned i = 1; i <= N_PIXELS; i++) {
+        arr_pixels[i-1].RGB(color->red, color->green, color->blue);
+        colorVector.push_back(*color);
+        if (i % length == 0){
+            color = std::next(color, 1);
+        }
+    }
+    patternChanged = false;
+}
+void LedController::splitFloating() {
+    if (firstPatternRun) {
+        splitStatic();
+        firstPatternRun = false;
+        patternChanged = true;
+    }
+    shift();
 }
 
 /** Setter **/
@@ -61,11 +92,6 @@ void LedController::setColor(unsigned char red, unsigned char green, unsigned ch
     color.red = red;
     color.green = green;
     color.blue = blue;
-}
-void LedController::setColor2(unsigned char red, unsigned char green, unsigned char blue) {
-    color2.red = red;
-    color2.green = green;
-    color2.blue = blue;
 }
 void LedController::setPattern(Pattern p) {
     mutex.lock();
@@ -82,7 +108,28 @@ void LedController::setPattern(Pattern p) {
         case Pattern::RAINBOW_FLOATING:
             patternMethod = &LedController::rainbowFloating;
             break;
+        case Pattern::SPLIT_STATIC:
+            patternMethod = &LedController::splitStatic;
+            break;
+        case Pattern::SPLIT_FLOATING:
+            patternMethod = &LedController::splitFloating;
+            break;
     }
     patternChanged = true;
+    firstPatternRun = true;
     mutex.unlock();
+}
+
+void LedController::clearUserColors(){
+    userColors.clear();
+}
+void LedController::addUserColor(Color c) {
+    userColors.push_back(c);
+}
+
+void LedController::shift(){
+    std::rotate(colorVector.begin(), colorVector.begin() + 1, colorVector.end());
+    for(int i = N_PIXELS-1; i >= 0; i--) {
+        arr_pixels[i].RGB(colorVector[i].red, colorVector[i].green, colorVector[i].blue);
+    }
 }

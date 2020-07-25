@@ -33,8 +33,21 @@
         <li>
             <div class="collapsible-header"><i class="material-icons">lightbulb_outline</i>Frontlicht</div>
             <div class="collapsible-body">
-                
-                <div id="colorpicker_front"></div>
+                <a class="waves-effect waves-light btn" onclick="led_off()"><i class="material-icons left">power_settings_new</i>Ausschalten</a>
+                <div class="row">
+                    <div class="col s12">
+                      <ul class="tabs">
+                        <li class="tab col s3"><a href="#simple_pattern">Einfache Muster</a></li>
+                        <li class="tab col s3"><a href="#static_color">Statische Farbe</a></li>
+                      </ul>
+                    </div>
+                    <div id="simple_pattern" class="col s12">
+                        <a class="waves-effect waves-light btn" onclick="led_static_rainbow()"><i class="material-icons left">looks</i>Regenbogen statisch</a>
+                        <a class="waves-effect waves-light btn" onclick="led_floating_rainbow()"><i class="material-icons left">looks</i>Regenbogen laufend</a>
+                    </div>
+                    <div id="static_color" class="col s12"><div id="colorpicker_static_color"></div></div>
+
+                  </div>
 
             </div>
         </li>
@@ -59,6 +72,7 @@
     <script src="js/iro-5.min.js"></script>
 
     <script src="js/design.js"></script>
+    <script src="js/requests.js"></script>
 
 </body>
 

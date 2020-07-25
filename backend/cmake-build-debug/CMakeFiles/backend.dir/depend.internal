@@ -10,6 +10,7 @@ CMakeFiles/backend.dir/main.cpp.o
  /home/pi/development/backend/lib/ws281x/ws281x.hpp
  /home/pi/development/backend/main.cpp
 CMakeFiles/backend.dir/src/LedController.cpp.o
+ /home/pi/development/backend/header/ColorConverter.h
  /home/pi/development/backend/header/LedController.h
  /home/pi/development/backend/lib/ws281x/ws281x.hpp
  /home/pi/development/backend/src/LedController.cpp

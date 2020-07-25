@@ -9,6 +9,7 @@ CMakeFiles/backend.dir/main.cpp.o: ../header/RestServer.h
 CMakeFiles/backend.dir/main.cpp.o: ../lib/ws281x/ws281x.hpp
 CMakeFiles/backend.dir/main.cpp.o: ../main.cpp
 
+CMakeFiles/backend.dir/src/LedController.cpp.o: ../header/ColorConverter.h
 CMakeFiles/backend.dir/src/LedController.cpp.o: ../header/LedController.h
 CMakeFiles/backend.dir/src/LedController.cpp.o: ../lib/ws281x/ws281x.hpp
 CMakeFiles/backend.dir/src/LedController.cpp.o: ../src/LedController.cpp
