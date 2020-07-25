@@ -142,167 +142,32 @@ backend/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/build
 .PHONY : backend/fast
 
-lib/PiLED/FastLED/colorpalettes.o: lib/PiLED/FastLED/colorpalettes.cpp.o
+lib/ws281x/ws281x.o: lib/ws281x/ws281x.cpp.o
 
-.PHONY : lib/PiLED/FastLED/colorpalettes.o
-
-# target to build an object file
-lib/PiLED/FastLED/colorpalettes.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.o
-.PHONY : lib/PiLED/FastLED/colorpalettes.cpp.o
-
-lib/PiLED/FastLED/colorpalettes.i: lib/PiLED/FastLED/colorpalettes.cpp.i
-
-.PHONY : lib/PiLED/FastLED/colorpalettes.i
-
-# target to preprocess a source file
-lib/PiLED/FastLED/colorpalettes.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.i
-.PHONY : lib/PiLED/FastLED/colorpalettes.cpp.i
-
-lib/PiLED/FastLED/colorpalettes.s: lib/PiLED/FastLED/colorpalettes.cpp.s
-
-.PHONY : lib/PiLED/FastLED/colorpalettes.s
-
-# target to generate assembly for a file
-lib/PiLED/FastLED/colorpalettes.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.s
-.PHONY : lib/PiLED/FastLED/colorpalettes.cpp.s
-
-lib/PiLED/FastLED/colorutils.o: lib/PiLED/FastLED/colorutils.cpp.o
-
-.PHONY : lib/PiLED/FastLED/colorutils.o
+.PHONY : lib/ws281x/ws281x.o
 
 # target to build an object file
-lib/PiLED/FastLED/colorutils.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.o
-.PHONY : lib/PiLED/FastLED/colorutils.cpp.o
+lib/ws281x/ws281x.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o
+.PHONY : lib/ws281x/ws281x.cpp.o
 
-lib/PiLED/FastLED/colorutils.i: lib/PiLED/FastLED/colorutils.cpp.i
+lib/ws281x/ws281x.i: lib/ws281x/ws281x.cpp.i
 
-.PHONY : lib/PiLED/FastLED/colorutils.i
-
-# target to preprocess a source file
-lib/PiLED/FastLED/colorutils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.i
-.PHONY : lib/PiLED/FastLED/colorutils.cpp.i
-
-lib/PiLED/FastLED/colorutils.s: lib/PiLED/FastLED/colorutils.cpp.s
-
-.PHONY : lib/PiLED/FastLED/colorutils.s
-
-# target to generate assembly for a file
-lib/PiLED/FastLED/colorutils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.s
-.PHONY : lib/PiLED/FastLED/colorutils.cpp.s
-
-lib/PiLED/FastLED/hsv2rgb.o: lib/PiLED/FastLED/hsv2rgb.cpp.o
-
-.PHONY : lib/PiLED/FastLED/hsv2rgb.o
-
-# target to build an object file
-lib/PiLED/FastLED/hsv2rgb.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.o
-.PHONY : lib/PiLED/FastLED/hsv2rgb.cpp.o
-
-lib/PiLED/FastLED/hsv2rgb.i: lib/PiLED/FastLED/hsv2rgb.cpp.i
-
-.PHONY : lib/PiLED/FastLED/hsv2rgb.i
+.PHONY : lib/ws281x/ws281x.i
 
 # target to preprocess a source file
-lib/PiLED/FastLED/hsv2rgb.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.i
-.PHONY : lib/PiLED/FastLED/hsv2rgb.cpp.i
+lib/ws281x/ws281x.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.i
+.PHONY : lib/ws281x/ws281x.cpp.i
 
-lib/PiLED/FastLED/hsv2rgb.s: lib/PiLED/FastLED/hsv2rgb.cpp.s
+lib/ws281x/ws281x.s: lib/ws281x/ws281x.cpp.s
 
-.PHONY : lib/PiLED/FastLED/hsv2rgb.s
-
-# target to generate assembly for a file
-lib/PiLED/FastLED/hsv2rgb.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.s
-.PHONY : lib/PiLED/FastLED/hsv2rgb.cpp.s
-
-lib/PiLED/FastLED/lib8tion.o: lib/PiLED/FastLED/lib8tion.cpp.o
-
-.PHONY : lib/PiLED/FastLED/lib8tion.o
-
-# target to build an object file
-lib/PiLED/FastLED/lib8tion.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.o
-.PHONY : lib/PiLED/FastLED/lib8tion.cpp.o
-
-lib/PiLED/FastLED/lib8tion.i: lib/PiLED/FastLED/lib8tion.cpp.i
-
-.PHONY : lib/PiLED/FastLED/lib8tion.i
-
-# target to preprocess a source file
-lib/PiLED/FastLED/lib8tion.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.i
-.PHONY : lib/PiLED/FastLED/lib8tion.cpp.i
-
-lib/PiLED/FastLED/lib8tion.s: lib/PiLED/FastLED/lib8tion.cpp.s
-
-.PHONY : lib/PiLED/FastLED/lib8tion.s
+.PHONY : lib/ws281x/ws281x.s
 
 # target to generate assembly for a file
-lib/PiLED/FastLED/lib8tion.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.s
-.PHONY : lib/PiLED/FastLED/lib8tion.cpp.s
-
-lib/PiLED/FastLED/noise.o: lib/PiLED/FastLED/noise.cpp.o
-
-.PHONY : lib/PiLED/FastLED/noise.o
-
-# target to build an object file
-lib/PiLED/FastLED/noise.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.o
-.PHONY : lib/PiLED/FastLED/noise.cpp.o
-
-lib/PiLED/FastLED/noise.i: lib/PiLED/FastLED/noise.cpp.i
-
-.PHONY : lib/PiLED/FastLED/noise.i
-
-# target to preprocess a source file
-lib/PiLED/FastLED/noise.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.i
-.PHONY : lib/PiLED/FastLED/noise.cpp.i
-
-lib/PiLED/FastLED/noise.s: lib/PiLED/FastLED/noise.cpp.s
-
-.PHONY : lib/PiLED/FastLED/noise.s
-
-# target to generate assembly for a file
-lib/PiLED/FastLED/noise.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.s
-.PHONY : lib/PiLED/FastLED/noise.cpp.s
-
-lib/PiLED/PiLED.o: lib/PiLED/PiLED.cpp.o
-
-.PHONY : lib/PiLED/PiLED.o
-
-# target to build an object file
-lib/PiLED/PiLED.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.o
-.PHONY : lib/PiLED/PiLED.cpp.o
-
-lib/PiLED/PiLED.i: lib/PiLED/PiLED.cpp.i
-
-.PHONY : lib/PiLED/PiLED.i
-
-# target to preprocess a source file
-lib/PiLED/PiLED.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.i
-.PHONY : lib/PiLED/PiLED.cpp.i
-
-lib/PiLED/PiLED.s: lib/PiLED/PiLED.cpp.s
-
-.PHONY : lib/PiLED/PiLED.s
-
-# target to generate assembly for a file
-lib/PiLED/PiLED.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.s
-.PHONY : lib/PiLED/PiLED.cpp.s
+lib/ws281x/ws281x.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.s
+.PHONY : lib/ws281x/ws281x.cpp.s
 
 main.o: main.cpp.o
 
@@ -394,24 +259,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... backend"
-	@echo "... lib/PiLED/FastLED/colorpalettes.o"
-	@echo "... lib/PiLED/FastLED/colorpalettes.i"
-	@echo "... lib/PiLED/FastLED/colorpalettes.s"
-	@echo "... lib/PiLED/FastLED/colorutils.o"
-	@echo "... lib/PiLED/FastLED/colorutils.i"
-	@echo "... lib/PiLED/FastLED/colorutils.s"
-	@echo "... lib/PiLED/FastLED/hsv2rgb.o"
-	@echo "... lib/PiLED/FastLED/hsv2rgb.i"
-	@echo "... lib/PiLED/FastLED/hsv2rgb.s"
-	@echo "... lib/PiLED/FastLED/lib8tion.o"
-	@echo "... lib/PiLED/FastLED/lib8tion.i"
-	@echo "... lib/PiLED/FastLED/lib8tion.s"
-	@echo "... lib/PiLED/FastLED/noise.o"
-	@echo "... lib/PiLED/FastLED/noise.i"
-	@echo "... lib/PiLED/FastLED/noise.s"
-	@echo "... lib/PiLED/PiLED.o"
-	@echo "... lib/PiLED/PiLED.i"
-	@echo "... lib/PiLED/PiLED.s"
+	@echo "... lib/ws281x/ws281x.o"
+	@echo "... lib/ws281x/ws281x.i"
+	@echo "... lib/ws281x/ws281x.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

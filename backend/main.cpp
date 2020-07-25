@@ -13,7 +13,10 @@ int main() {
 
     std::cout << "[INFO] Starting LedController thread..." << std::endl;
     LedController ledController;
-    ledController.init();
+    if (!ledController.init()) {
+        std::cerr << "[ERROR] LedController could not be started" << std::endl;
+        return EXIT_FAILURE;
+    }
     std::thread ledThread(&LedController::loop, &ledController);
     std::cout << "[INFO] LedController thread started." << std::endl << std::endl;
 

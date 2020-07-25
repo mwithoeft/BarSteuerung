@@ -115,95 +115,25 @@ CMakeFiles/backend.dir/src/LedController.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backend.dir/src/LedController.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/development/backend/src/LedController.cpp -o CMakeFiles/backend.dir/src/LedController.cpp.s
 
-CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.o: CMakeFiles/backend.dir/flags.make
-CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.o: ../lib/PiLED/FastLED/colorpalettes.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/development/backend/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.o -c /home/pi/development/backend/lib/PiLED/FastLED/colorpalettes.cpp
+CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o: CMakeFiles/backend.dir/flags.make
+CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o: ../lib/ws281x/ws281x.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/development/backend/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o -c /home/pi/development/backend/lib/ws281x/ws281x.cpp
 
-CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/development/backend/lib/PiLED/FastLED/colorpalettes.cpp > CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.i
+CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/development/backend/lib/ws281x/ws281x.cpp > CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.i
 
-CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/development/backend/lib/PiLED/FastLED/colorpalettes.cpp -o CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.s
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.o: CMakeFiles/backend.dir/flags.make
-CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.o: ../lib/PiLED/FastLED/colorutils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/development/backend/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.o -c /home/pi/development/backend/lib/PiLED/FastLED/colorutils.cpp
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/development/backend/lib/PiLED/FastLED/colorutils.cpp > CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.i
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/development/backend/lib/PiLED/FastLED/colorutils.cpp -o CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.s
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.o: CMakeFiles/backend.dir/flags.make
-CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.o: ../lib/PiLED/FastLED/hsv2rgb.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/development/backend/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.o -c /home/pi/development/backend/lib/PiLED/FastLED/hsv2rgb.cpp
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/development/backend/lib/PiLED/FastLED/hsv2rgb.cpp > CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.i
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/development/backend/lib/PiLED/FastLED/hsv2rgb.cpp -o CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.s
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.o: CMakeFiles/backend.dir/flags.make
-CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.o: ../lib/PiLED/FastLED/lib8tion.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/development/backend/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.o -c /home/pi/development/backend/lib/PiLED/FastLED/lib8tion.cpp
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/development/backend/lib/PiLED/FastLED/lib8tion.cpp > CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.i
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/development/backend/lib/PiLED/FastLED/lib8tion.cpp -o CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.s
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.o: CMakeFiles/backend.dir/flags.make
-CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.o: ../lib/PiLED/FastLED/noise.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/development/backend/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.o -c /home/pi/development/backend/lib/PiLED/FastLED/noise.cpp
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/development/backend/lib/PiLED/FastLED/noise.cpp > CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.i
-
-CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/development/backend/lib/PiLED/FastLED/noise.cpp -o CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.s
-
-CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.o: CMakeFiles/backend.dir/flags.make
-CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.o: ../lib/PiLED/PiLED.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/development/backend/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.o -c /home/pi/development/backend/lib/PiLED/PiLED.cpp
-
-CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/development/backend/lib/PiLED/PiLED.cpp > CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.i
-
-CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/development/backend/lib/PiLED/PiLED.cpp -o CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.s
+CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/development/backend/lib/ws281x/ws281x.cpp -o CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.s
 
 # Object files for target backend
 backend_OBJECTS = \
 "CMakeFiles/backend.dir/main.cpp.o" \
 "CMakeFiles/backend.dir/src/RestServer.cpp.o" \
 "CMakeFiles/backend.dir/src/LedController.cpp.o" \
-"CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.o" \
-"CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.o" \
-"CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.o" \
-"CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.o" \
-"CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.o" \
-"CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.o"
+"CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o"
 
 # External object files for target backend
 backend_EXTERNAL_OBJECTS =
@@ -211,15 +141,10 @@ backend_EXTERNAL_OBJECTS =
 backend: CMakeFiles/backend.dir/main.cpp.o
 backend: CMakeFiles/backend.dir/src/RestServer.cpp.o
 backend: CMakeFiles/backend.dir/src/LedController.cpp.o
-backend: CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.o
-backend: CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.o
-backend: CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.o
-backend: CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.o
-backend: CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.o
-backend: CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.o
+backend: CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o
 backend: CMakeFiles/backend.dir/build.make
 backend: CMakeFiles/backend.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/development/backend/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable backend"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/development/backend/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable backend"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/backend.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

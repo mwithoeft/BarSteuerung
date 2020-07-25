@@ -1,10 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/backend.dir/lib/PiLED/FastLED/colorpalettes.cpp.o"
-  "CMakeFiles/backend.dir/lib/PiLED/FastLED/colorutils.cpp.o"
-  "CMakeFiles/backend.dir/lib/PiLED/FastLED/hsv2rgb.cpp.o"
-  "CMakeFiles/backend.dir/lib/PiLED/FastLED/lib8tion.cpp.o"
-  "CMakeFiles/backend.dir/lib/PiLED/FastLED/noise.cpp.o"
-  "CMakeFiles/backend.dir/lib/PiLED/PiLED.cpp.o"
+  "CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o"
   "CMakeFiles/backend.dir/main.cpp.o"
   "CMakeFiles/backend.dir/src/LedController.cpp.o"
   "CMakeFiles/backend.dir/src/RestServer.cpp.o"
