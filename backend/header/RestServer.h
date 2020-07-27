@@ -40,6 +40,9 @@ private:
     static void split_static_handler(std::shared_ptr<restbed::Session >);
     static void split_floating_handler(std::shared_ptr<restbed::Session >);
 
+
+
+    static void parseStrToVec(std::string, std::vector<int>&);
 };
 
 

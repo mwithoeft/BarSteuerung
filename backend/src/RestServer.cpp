@@ -1,4 +1,5 @@
 #include <sstream>
+#include <iostream>
 #include "../header/RestServer.h"
 
 LedController* RestServer::ledController;
@@ -62,9 +63,7 @@ void RestServer::static_color_handler(const std::shared_ptr<restbed::Session> se
     std::stringstream r(request->get_query_parameter("r"));
     std::stringstream g(request->get_query_parameter("g"));
     std::stringstream b(request->get_query_parameter("b"));
-    int R;
-    int G;
-    int B;
+    unsigned R, G, B;
     r >> R;
     g >> G;
     b >> B;
@@ -73,7 +72,6 @@ void RestServer::static_color_handler(const std::shared_ptr<restbed::Session> se
     std::string returnStr = "OK";
     session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
 }
-
 void RestServer::off_handler(const std::shared_ptr<restbed::Session> session) {
     ledController->setColor(0, 0, 0);
     ledController->setPattern(LedController::Pattern::OFF);
@@ -89,7 +87,6 @@ void RestServer::rainbow_static_handler(std::shared_ptr<restbed::Session> sessio
 
     session->close(restbed::OK, testStr.c_str(), { { "Content-Length", std::to_string(testStr.size()) } } );
 }
-
 void RestServer::rainbow_floating_handler(const std::shared_ptr<restbed::Session> session) {
     ledController->setPattern(LedController::Pattern::RAINBOW_FLOATING);
 
@@ -99,35 +96,40 @@ void RestServer::rainbow_floating_handler(const std::shared_ptr<restbed::Session
 }
 
 void RestServer::split_static_handler(const std::shared_ptr<restbed::Session> session) {
+    const auto request = session->get_request();
+    std::string str = request->get_query_parameter("array");
+    std::vector<int> vector;
+    parseStrToVec(str, vector);
+
     ledController->clearUserColors();
-
-    /** Beispiel Anfang **/
-    ledController->addUserColor(Color{255, 0, 0});
-    ledController->addUserColor(Color{0, 255, 0});
-    ledController->addUserColor(Color{0, 0, 255});
-    ledController->addUserColor(Color{139, 69, 19});
-    /** Beispiel Ende **/
-
+    for (unsigned i = 0; i < vector.size(); i+=3) {
+        ledController->addUserColor(Color{(unsigned char)vector[i], (unsigned char)vector[i+1], (unsigned char)vector[i+2]});
+    }
     ledController->setPattern(LedController::Pattern::SPLIT_STATIC);
-
-    std::string testStr = "Test erfolgreich";
-
-    session->close(restbed::OK, testStr.c_str(), { { "Content-Length", std::to_string(testStr.size()) } } );
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
 }
 
 void RestServer::split_floating_handler(const std::shared_ptr<restbed::Session> session) {
+    const auto request = session->get_request();
+    std::string str = request->get_query_parameter("array");
+    std::vector<int> vector;
+    parseStrToVec(str, vector);
+
     ledController->clearUserColors();
-
-    /** Beispiel Anfang **/
-    ledController->addUserColor(Color{255, 0, 0});
-    ledController->addUserColor(Color{0, 255, 0});
-    ledController->addUserColor(Color{0, 0, 255});
-    ledController->addUserColor(Color{139, 69, 19});
-    /** Beispiel Ende **/
-
+    for (unsigned i = 0; i < vector.size(); i+=3) {
+        ledController->addUserColor(Color{(unsigned char)vector[i], (unsigned char)vector[i+1], (unsigned char)vector[i+2]});
+    }
     ledController->setPattern(LedController::Pattern::SPLIT_FLOATING);
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
 
-    std::string testStr = "Test erfolgreich";
-
-    session->close(restbed::OK, testStr.c_str(), { { "Content-Length", std::to_string(testStr.size()) } } );
+void RestServer::parseStrToVec(std::string str, std::vector<int>& vect){
+    std::stringstream ss(str);
+    for (int i; ss >> i;) {
+        vect.push_back(i);
+        if (ss.peek() == ',')
+            ss.ignore();
+    }
 }
