@@ -35,6 +35,7 @@ public:
     void setPattern(Pattern);
     void clearUserColors();
     void addUserColor(Color);
+    void setSpeed(unsigned);
 
 private:
     std::mutex mutex;
@@ -43,7 +44,8 @@ private:
 
     /** LED Settings **/
     ws281x::TSPIDriver* spi_dev_1;
-    static const unsigned N_PIXELS = 300;
+    static const unsigned N_PIXELS = 600;
+    unsigned speed = 100050;
     ws281x::TWS2812B arr_pixels[N_PIXELS];
     void flush();
     Color color{0, 0, 0};

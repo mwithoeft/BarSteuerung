@@ -22,7 +22,7 @@ void LedController::loop(){
             ((*this).*patternMethod)();
         flush();
         mutex.unlock();
-        std::this_thread::sleep_for(std::chrono::milliseconds (10));
+        std::this_thread::sleep_for(std::chrono::microseconds (speed));
     }
 }
 
@@ -44,14 +44,13 @@ void LedController::off(){
 }
 void LedController::rainbowStatic(){
     colorVector.clear();
-    static unsigned char r,g,b;
-    unsigned angle;
+    double angle;
     for (unsigned a = 0;a<N_PIXELS;a++) {
         //Berechnung des Winkels für die Anzahl der LEDs
-        angle = (359/N_PIXELS)*a;
-        angle += ((359/(N_PIXELS))/100);
+        angle = (359/(double)N_PIXELS)*a;
+        angle += ((359/(double)(N_PIXELS))/100);
         if(angle>359) angle-=359;
-        Color color = colorConverter.hsvToRgb(angle,100,100);
+        Color color = colorConverter.hsvToRgb((int)angle,100,100);
         arr_pixels[a].RGB(color.red, color.green, color.blue);
         colorVector.push_back(color);
     }
@@ -125,6 +124,9 @@ void LedController::clearUserColors(){
 }
 void LedController::addUserColor(Color c) {
     userColors.push_back(c);
+}
+void LedController::setSpeed(unsigned s) {
+    speed = s;
 }
 
 void LedController::shift(){

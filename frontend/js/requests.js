@@ -60,3 +60,15 @@ var led_floating_split = function() {
         }
     });
 }
+
+var led_set_speed = function(speed) {
+    speed = 200000-speed+100;
+    $.ajax({
+        url: `${address}setSpeed?speed=${speed}`,
+        type: 'GET',
+        error: function (res) {
+            console.log(res);
+            M.toast({html: 'Fehler!'})
+        }
+    });
+}

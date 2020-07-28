@@ -4,8 +4,8 @@ var page_collapsible;
 var ledUserColorsSplit = [];
 
 $(document).ready(function () {
-    page_collapsible = M.Collapsible.init(document.querySelector("#page_collapsible"),{
-        onOpenEnd: function(el) {
+    page_collapsible = M.Collapsible.init(document.querySelector("#page_collapsible"), {
+        onOpenEnd: function (el) {
             if (led_tabs.index == 0) {
                 fixLedTabIndicator();
             }
@@ -14,11 +14,11 @@ $(document).ready(function () {
     led_tabs = M.Tabs.init(document.querySelector("#led_tabs"));
 });
 
-var fixLedTabIndicator = function() {
-    if( typeof fixLedTabIndicator.done == 'undefined' ) {
+var fixLedTabIndicator = function () {
+    if (typeof fixLedTabIndicator.done == 'undefined') {
         fixLedTabIndicator.done = false;
     }
-    if (!fixLedTabIndicator.done)   led_tabs.select("led_simple_pattern");
+    if (!fixLedTabIndicator.done) led_tabs.select("led_simple_pattern");
     fixLedTabIndicator.done = true;
 }
 
@@ -35,7 +35,7 @@ colorPickerLedStaticColor.on('input:end', function (color) {
         type: 'GET',
         error: function (res) {
             console.log(res);
-            M.toast({html: 'Fehler!'})
+            M.toast({ html: 'Fehler!' })
         }
     });
 });
@@ -46,10 +46,10 @@ var colorPickerLedSplit = new iro.ColorPicker("#colorpicker_led_split", {
     display: "block",
 });
 
-var addLedUserColor = function() {
+var addLedUserColor = function () {
     let index = ledUserColorsSplit.length / 3;
     if (index > 15) {
-        M.toast({html: 'Maximal 16!'})
+        M.toast({ html: 'Maximal 16!' })
         return;
     }
     let color = colorPickerLedSplit.color.rgb;
@@ -62,14 +62,14 @@ var addLedUserColor = function() {
     button.dataset.index = index;
     button.classList.add("usercolors_led_split_button");
 
-    button.style.backgroundColor = backgroundColor = 'rgb(' + [color.r,color.g,color.b].join(',') + ')';
-    button.onclick = function(){removeLedUserColor(this)};
+    button.style.backgroundColor = backgroundColor = 'rgb(' + [color.r, color.g, color.b].join(',') + ')';
+    button.onclick = function () { removeLedUserColor(this) };
     colorPanel.appendChild(button);
 }
 
-var removeLedUserColor = function(button) {
+var removeLedUserColor = function (button) {
     let index = button.dataset.index;
-    ledUserColorsSplit.splice(index*3, 3); //3 Elemente (R,G,B) an index*3 löschen
+    ledUserColorsSplit.splice(index * 3, 3); //3 Elemente (R,G,B) an index*3 löschen
     button.parentNode.removeChild(button);
     //Neue Zuweisung von data-index
     let children = document.querySelector("#usercolors_led_split").children;

@@ -38,6 +38,10 @@ bool RestServer::init() {
     splitFloatingResource->set_path("/floatingSplit");
     splitFloatingResource->set_method_handler("GET", split_floating_handler);
 
+    setSpeedResource = std::make_shared<restbed::Resource>();
+    setSpeedResource->set_path("/setSpeed");
+    setSpeedResource->set_method_handler("GET", set_speed_handler);
+
     settings = std::make_shared<restbed::Settings>();
     settings->set_port(PORT);
     settings->set_default_header("Connection", "close");
@@ -52,6 +56,7 @@ void RestServer::start(void (*ready_handler)(restbed::Service&)) {
     service->publish(rainbowFloatingResource);
     service->publish(splitStaticResource);
     service->publish(splitFloatingResource);
+    service->publish(setSpeedResource);
 
     settings->set_default_header( "Access-Control-Allow-Origin", "*" );
     service->set_ready_handler(ready_handler);
@@ -133,3 +138,15 @@ void RestServer::parseStrToVec(std::string str, std::vector<int>& vect){
             ss.ignore();
     }
 }
+
+void RestServer::set_speed_handler(std::shared_ptr<restbed::Session> session) {
+    const auto request = session->get_request();
+    std::stringstream speedStream(request->get_query_parameter("speed"));
+    unsigned speed;
+    speedStream >> speed;
+    ledController->setSpeed(speed);
+
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
+

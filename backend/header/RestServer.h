@@ -29,6 +29,7 @@ private:
     std::shared_ptr<restbed::Resource> rainbowFloatingResource;
     std::shared_ptr<restbed::Resource> splitStaticResource;
     std::shared_ptr<restbed::Resource> splitFloatingResource;
+    std::shared_ptr<restbed::Resource> setSpeedResource;
 
 
     std::shared_ptr<restbed::Settings> settings;
@@ -39,6 +40,7 @@ private:
     static void rainbow_floating_handler(std::shared_ptr<restbed::Session >);
     static void split_static_handler(std::shared_ptr<restbed::Session >);
     static void split_floating_handler(std::shared_ptr<restbed::Session >);
+    static void set_speed_handler(std::shared_ptr<restbed::Session >);
 
 
 

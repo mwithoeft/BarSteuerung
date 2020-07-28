@@ -58,3 +58,11 @@ nav .brand-logo {
 .usercolors_led_split_button:hover {
   cursor: pointer;
 }
+
+#led_speed_slider_field {
+  margin: 0;
+}
+
+span.thumb {
+  display: none;
+}
