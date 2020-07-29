@@ -46,12 +46,12 @@ void LedController::off(){
 void LedController::rainbowStatic(){
     colorVector.clear();
     double angle;
-    for (unsigned a = 0;a<N_PIXELS;a++) {
+    for (unsigned a = 0; a < N_PIXELS; a++) {
         //Berechnung des Winkels für die Anzahl der LEDs
         angle = (359/(double)N_PIXELS)*a;
         angle += ((359/(double)(N_PIXELS))/100);
         if(angle>359) angle-=359;
-        Color color = colorConverter.hsvToRgb((int)angle,100,100);
+        Color color = ColorConverter::hsvToRgb((int)angle,100,100);
         arr_pixels[a].RGB(color.red, color.green, color.blue);
         colorVector.push_back(color);
     }
