@@ -2,7 +2,6 @@
 #define BACKEND_COLORCONVERTER_H
 
 #include "math.h"
-
 #include "LedController.h"
 
 static struct ColorConverter {
@@ -51,6 +50,45 @@ static struct ColorConverter {
         b = (b * v)/100;
         Color color{r, g, b};
         return color;
+    }
+
+    std::vector<unsigned> rgbToHsv(Color c){
+        double min, max, delta;
+
+        double h, s, v;
+
+        min = c.red < c.green ? c.red : c.green;
+        min = min  < c.blue ? min  : c.blue;
+        max = c.red > c.green ? c.red : c.green;
+        max = max  > c.blue ? max  : c.blue;
+
+        v = max;
+        delta = max - min;
+        if (delta < 0.00001) {
+            s = 0;
+            h = 0;
+            return {(unsigned)h, (unsigned)(s*100), (unsigned)(v/255)};
+        }
+        if( max > 0.0 ) {
+            s = (delta / max);
+        } else {
+            s = 0.0;
+            h = NAN;
+            return {(unsigned)h, (unsigned)(s*100), (unsigned)(v/255)};
+        }
+        if( c.red >= max )
+            h = ( c.green - c.blue ) / delta;
+        else if( c.green >= max )
+            h = 2.0 + ( c.blue - c.red ) / delta;
+        else
+            h = 4.0 + ( c.red - c.green ) / delta;
+
+        h *= 60.0;
+
+        if( h < 0.0 )
+            h += 360.0;
+
+        return {(unsigned)h, (unsigned)(s*100), (unsigned)(v/255*100)};
     }
 
 

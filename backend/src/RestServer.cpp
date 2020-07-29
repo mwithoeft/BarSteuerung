@@ -42,6 +42,10 @@ bool RestServer::init() {
     setSpeedResource->set_path("/setSpeed");
     setSpeedResource->set_method_handler("GET", set_speed_handler);
 
+    pulseResource = std::make_shared<restbed::Resource>();
+    pulseResource->set_path("/pulse");
+    pulseResource->set_method_handler("GET", pulse_handler);
+
     settings = std::make_shared<restbed::Settings>();
     settings->set_port(PORT);
     settings->set_default_header("Connection", "close");
@@ -57,6 +61,7 @@ void RestServer::start(void (*ready_handler)(restbed::Service&)) {
     service->publish(splitStaticResource);
     service->publish(splitFloatingResource);
     service->publish(setSpeedResource);
+    service->publish(pulseResource);
 
     settings->set_default_header( "Access-Control-Allow-Origin", "*" );
     service->set_ready_handler(ready_handler);
@@ -129,6 +134,22 @@ void RestServer::split_floating_handler(const std::shared_ptr<restbed::Session> 
     std::string returnStr = "OK";
     session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
 }
+
+void RestServer::pulse_handler(const std::shared_ptr<restbed::Session> session) {
+    const auto request = session->get_request();
+    std::string str = request->get_query_parameter("array");
+    std::vector<int> vector;
+    parseStrToVec(str, vector);
+
+    ledController->clearUserColors();
+    for (unsigned i = 0; i < vector.size(); i+=3) {
+        ledController->addUserColor(Color{(unsigned char)vector[i], (unsigned char)vector[i+1], (unsigned char)vector[i+2]});
+    }
+    ledController->setPattern(LedController::Pattern::PULSE);
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
+
 
 void RestServer::parseStrToVec(std::string str, std::vector<int>& vect){
     std::stringstream ss(str);

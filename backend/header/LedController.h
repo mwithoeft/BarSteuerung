@@ -20,7 +20,8 @@ public:
         RAINBOW_STATIC,
         RAINBOW_FLOATING,
         SPLIT_STATIC,
-        SPLIT_FLOATING
+        SPLIT_FLOATING,
+        PULSE
     };
 
 
@@ -45,7 +46,7 @@ private:
     /** LED Settings **/
     ws281x::TSPIDriver* spi_dev_1;
     static const unsigned N_PIXELS = 600;
-    unsigned speed = 100050;
+    unsigned speed = 600050;
     ws281x::TWS2812B arr_pixels[N_PIXELS];
     void flush();
     Color color{0, 0, 0};
@@ -61,6 +62,7 @@ private:
     void rainbowFloating();
     void splitStatic();
     void splitFloating();
+    void pulse();
 
     /** Funktionspointer **/
     void (LedController::*patternMethod)();

@@ -18,9 +18,10 @@ bool LedController::init() {
 void LedController::loop(){
     for (;;) {
         mutex.lock();
-        if (patternChanged)
+        if (patternChanged) {
             ((*this).*patternMethod)();
-        flush();
+            flush();
+        }
         mutex.unlock();
         std::this_thread::sleep_for(std::chrono::microseconds (speed));
     }
@@ -86,6 +87,23 @@ void LedController::splitFloating() {
     shift();
 }
 
+void LedController::pulse() {
+    static bool pulseCounter = true;
+    if (firstPatternRun) {
+        splitStatic();
+        firstPatternRun = false;
+    }
+    if (pulseCounter) {
+        for (unsigned i = 1; i <= N_PIXELS; i++)
+            arr_pixels[i-1].RGB(colorVector[i].red, colorVector[i].green, colorVector[i].blue);
+    } else {
+        off();
+    }
+
+    pulseCounter = !pulseCounter;
+    patternChanged = true;
+}
+
 /** Setter **/
 void LedController::setColor(unsigned char red, unsigned char green, unsigned char blue) {
     color.red = red;
@@ -112,6 +130,9 @@ void LedController::setPattern(Pattern p) {
             break;
         case Pattern::SPLIT_FLOATING:
             patternMethod = &LedController::splitFloating;
+            break;
+        case Pattern::PULSE:
+            patternMethod = &LedController::pulse;
             break;
     }
     patternChanged = true;
