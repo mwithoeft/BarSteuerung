@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bar Steuerung</title>
+    <link rel="icon" type="image/png" href="./favicon.svg"/>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,7 +22,7 @@
                 <p class="range-field" id="led_speed_slider_field">
                     <span>Langsam</span>
                     <span style="float: right;">Schnell</span>
-                    <input type="range" id="led_speed_slider" min="100" max="200000" onchange="led_set_speed(this.value)"/>
+                    <input type="range" id="led_speed_slider" min="100" max="1200000" onchange="led_set_speed(this.value)"/>
                 </p>
                 <div class="row">
                     <div class="col s12">
@@ -32,8 +33,8 @@
                       </ul>
                     </div>
                     <div id="led_simple_pattern" class="col s12">
-                        <a class="waves-effect waves-light btn" onclick="led_static_rainbow()"><i class="material-icons left">looks</i>Regenbogen statisch</a>
-                        <a class="waves-effect waves-light btn" onclick="led_floating_rainbow()"><i class="material-icons left">looks</i>Regenbogen laufend</a>
+                        <a class="waves-effect waves-light btn" onclick="led_static_rainbow()" style="width: 49%;"><i class="material-icons left">looks</i>Statisch</a>
+                        <a class="waves-effect waves-light btn" onclick="led_floating_rainbow()" style="width: 49%; float:right"><i class="material-icons left">looks</i>Laufend</a>
                     </div>
                     <div id="led_static_color" class="col s12"><div id="colorpicker_led_static_color"></div></div>
                     <div id="led_split" class="col s12">
@@ -42,9 +43,9 @@
                         <a class="waves-effect waves-light btn" onclick="addLedUserColor()"><i class="material-icons left">addchart</i>Farbe hinzufügen</a>
                         <a class="waves-effect waves-light btn" onclick="led_static_split()" style="width: 49%;"><i class="material-icons left">pause</i>Setzen</a>
                         <a class="waves-effect waves-light btn" onclick="led_floating_split()" style="width: 49%; float:right"><i class="material-icons left">double_arrow</i>Setzen</a>
+                        <a class="waves-effect waves-light btn" onclick="led_pulse()"><i class="material-icons left">flash_on</i><i class="material-icons left">flash_off</i>Setzen</a>
                     </div>
                   </div>
-
             </div>
         </li>
 
@@ -58,8 +59,6 @@
         </li>
 
     </ul>
-
-
 
     <!--  Scripts-->
     <script src="js/jquery-3.5.1.min.js"></script>

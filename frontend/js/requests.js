@@ -62,9 +62,24 @@ var led_floating_split = function() {
 }
 
 var led_set_speed = function(speed) {
-    speed = 200000-speed+100;
+    speed = 1200000-speed+100;
     $.ajax({
         url: `${address}setSpeed?speed=${speed}`,
+        type: 'GET',
+        error: function (res) {
+            console.log(res);
+            M.toast({html: 'Fehler!'})
+        }
+    });
+}
+
+var led_pulse = function() {
+    if (ledUserColorsSplit.length < 2) {
+        M.toast({html: 'Mindestens 2!'})
+        return;
+    }
+    $.ajax({
+        url: `${address}pulse?array=${JSON.parse(JSON.stringify(ledUserColorsSplit))}`,
         type: 'GET',
         error: function (res) {
             console.log(res);
