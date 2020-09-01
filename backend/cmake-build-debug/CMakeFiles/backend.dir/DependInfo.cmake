@@ -7,6 +7,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pi/development/backend/lib/ws281x/ws281x.cpp" "/home/pi/development/backend/cmake-build-debug/CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o"
   "/home/pi/development/backend/main.cpp" "/home/pi/development/backend/cmake-build-debug/CMakeFiles/backend.dir/main.cpp.o"
   "/home/pi/development/backend/src/LedController.cpp" "/home/pi/development/backend/cmake-build-debug/CMakeFiles/backend.dir/src/LedController.cpp.o"
+  "/home/pi/development/backend/src/PlugHandler.cpp" "/home/pi/development/backend/cmake-build-debug/CMakeFiles/backend.dir/src/PlugHandler.cpp.o"
+  "/home/pi/development/backend/src/RCSwitch.cpp" "/home/pi/development/backend/cmake-build-debug/CMakeFiles/backend.dir/src/RCSwitch.cpp.o"
   "/home/pi/development/backend/src/RestServer.cpp" "/home/pi/development/backend/cmake-build-debug/CMakeFiles/backend.dir/src/RestServer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

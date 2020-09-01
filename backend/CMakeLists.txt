@@ -8,7 +8,7 @@ file(GLOB ws281x_SRC
         "lib/ws281x/*.hpp"
         )
 
-add_executable(backend main.cpp header/RestServer.h src/RestServer.cpp header/LedController.h src/LedController.cpp ${ws281x_SRC} header/ColorConverter.h header/ColorConverter.h header/ColorConverter.h)
+add_executable(backend main.cpp header/RestServer.h src/RestServer.cpp header/LedController.h src/LedController.cpp ${ws281x_SRC} header/ColorConverter.h header/ColorConverter.h header/ColorConverter.h header/RCSwitch.h src/RCSwitch.cpp header/PlugHandler.h src/PlugHandler.cpp)
 
 
 target_link_libraries(backend -lwiringPi)

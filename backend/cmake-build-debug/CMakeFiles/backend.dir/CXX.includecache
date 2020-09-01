@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/pi/development/backend/header/ColorConverter.h
+math.h
+/home/pi/development/backend/header/math.h
+LedController.h
+/home/pi/development/backend/header/LedController.h
+
 /home/pi/development/backend/header/LedController.h
 mutex
 -
@@ -31,6 +37,26 @@ unistd.h
 -
 string.h
 -
+
+/home/pi/development/backend/main.cpp
+iostream
+-
+restbed
+-
+header/RestServer.h
+/home/pi/development/backend/header/RestServer.h
+
+/home/pi/development/backend/src/LedController.cpp
+iostream
+-
+thread
+-
+algorithm
+-
+../header/LedController.h
+/home/pi/development/backend/header/LedController.h
+../header/ColorConverter.h
+/home/pi/development/backend/header/ColorConverter.h
 
 /home/pi/development/backend/src/RestServer.cpp
 sstream

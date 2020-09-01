@@ -45,7 +45,10 @@ private:
 
     /** LED Settings **/
     ws281x::TSPIDriver* spi_dev_1;
-    static const unsigned N_PIXELS = 600;
+    static const unsigned N_PIXELS = 576;
+    //Vorne sind 505
+    //Hinten sind 71
+
     unsigned speed = 600050;
     ws281x::TWS2812B arr_pixels[N_PIXELS];
     void flush();

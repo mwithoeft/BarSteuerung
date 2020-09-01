@@ -3,10 +3,13 @@
 #include "../header/RestServer.h"
 
 LedController* RestServer::ledController;
+PlugHandler* RestServer::plugHandler;
 
 RestServer::RestServer(LedController* ledController) {
-    RestServer::ledController = ledController;
     service = new restbed::Service();
+
+    RestServer::plugHandler = new PlugHandler();
+    RestServer::ledController = ledController;
 }
 
 RestServer::~RestServer() {
@@ -14,6 +17,12 @@ RestServer::~RestServer() {
 }
 
 bool RestServer::init() {
+    if (!plugHandler->setup()){
+        std::cerr << "[ERROR] PlugHandler setup failed" << std::endl;
+        return false;
+    }
+
+    /** LED Resources **/
     staticColorResource = std::make_shared<restbed::Resource>();
     staticColorResource->set_path("/staticColor");
     staticColorResource->set_method_handler("GET", static_color_handler);
@@ -46,6 +55,35 @@ bool RestServer::init() {
     pulseResource->set_path("/pulse");
     pulseResource->set_method_handler("GET", pulse_handler);
 
+    /** PowerPlugs Resources **/
+    powerPlugsStatusResource = std::make_shared<restbed::Resource>();
+    powerPlugsStatusResource->set_path("/powerPlugsStatus");
+    powerPlugsStatusResource->set_method_handler("GET", powerplugs_status_handler);
+
+    allPowerPlugsOnResource = std::make_shared<restbed::Resource>();
+    allPowerPlugsOnResource->set_path("/allPowerPlugsOn");
+    allPowerPlugsOnResource->set_method_handler("GET", all_powerplugs_on_handler);
+
+    allPowerPlugsOffResource = std::make_shared<restbed::Resource>();
+    allPowerPlugsOffResource->set_path("/allPowerPlugsOff");
+    allPowerPlugsOffResource->set_method_handler("GET", all_powerplugs_off_handler);
+
+    frontTVOnResource = std::make_shared<restbed::Resource>();
+    frontTVOnResource->set_path("/frontTVOn");
+    frontTVOnResource->set_method_handler("GET", front_tv_on_handler);
+
+    frontTVOffResource = std::make_shared<restbed::Resource>();
+    frontTVOffResource->set_path("/frontTVOff");
+    frontTVOffResource->set_method_handler("GET", front_tv_off_handler);
+
+    backTVOnResource = std::make_shared<restbed::Resource>();
+    backTVOnResource->set_path("/backTVOn");
+    backTVOnResource->set_method_handler("GET", back_tv_on_handler);
+
+    backTVOffResource = std::make_shared<restbed::Resource>();
+    backTVOffResource->set_path("/backTVOff");
+    backTVOffResource->set_method_handler("GET", back_tv_off_handler);
+
     settings = std::make_shared<restbed::Settings>();
     settings->set_port(PORT);
     settings->set_default_header("Connection", "close");
@@ -54,6 +92,7 @@ bool RestServer::init() {
 }
 
 void RestServer::start(void (*ready_handler)(restbed::Service&)) {
+    /** LED Resources **/
     service->publish(staticColorResource);
     service->publish(offResource);
     service->publish(rainbowStaticResource);
@@ -62,6 +101,15 @@ void RestServer::start(void (*ready_handler)(restbed::Service&)) {
     service->publish(splitFloatingResource);
     service->publish(setSpeedResource);
     service->publish(pulseResource);
+
+    /** Power Plugs Resources **/
+    service->publish(powerPlugsStatusResource);
+    service->publish(allPowerPlugsOnResource);
+    service->publish(allPowerPlugsOffResource);
+    service->publish(frontTVOnResource);
+    service->publish(frontTVOffResource);
+    service->publish(backTVOnResource);
+    service->publish(backTVOffResource);
 
     settings->set_default_header( "Access-Control-Allow-Origin", "*" );
     service->set_ready_handler(ready_handler);
@@ -86,23 +134,23 @@ void RestServer::off_handler(const std::shared_ptr<restbed::Session> session) {
     ledController->setColor(0, 0, 0);
     ledController->setPattern(LedController::Pattern::OFF);
 
-    std::string testStr = "Test erfolgreich";
+    std::string returnStr = "Test erfolgreich";
 
-    session->close(restbed::OK, testStr.c_str(), { { "Content-Length", std::to_string(testStr.size()) } } );
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
 }
 void RestServer::rainbow_static_handler(std::shared_ptr<restbed::Session> session) {
     ledController->setPattern(LedController::Pattern::RAINBOW_STATIC);
 
-    std::string testStr = "Test erfolgreich";
+    std::string returnStr = "OK";
 
-    session->close(restbed::OK, testStr.c_str(), { { "Content-Length", std::to_string(testStr.size()) } } );
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
 }
 void RestServer::rainbow_floating_handler(const std::shared_ptr<restbed::Session> session) {
     ledController->setPattern(LedController::Pattern::RAINBOW_FLOATING);
 
-    std::string testStr = "Test erfolgreich";
+    std::string returnStr = "OK";
 
-    session->close(restbed::OK, testStr.c_str(), { { "Content-Length", std::to_string(testStr.size()) } } );
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
 }
 
 void RestServer::split_static_handler(const std::shared_ptr<restbed::Session> session) {
@@ -171,3 +219,49 @@ void RestServer::set_speed_handler(std::shared_ptr<restbed::Session> session) {
     session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
 }
 
+/** PowerPlug Handler **/
+void RestServer::powerplugs_status_handler(std::shared_ptr<restbed::Session> session) {
+    std::string returnStr = plugHandler->getStatus();
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
+void RestServer::all_powerplugs_on_handler(std::shared_ptr<restbed::Session> session) {
+    plugHandler->allOn();
+    plugHandler->writeStatusFile();
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
+void RestServer::all_powerplugs_off_handler(std::shared_ptr<restbed::Session> session) {
+    plugHandler->allOff();
+    plugHandler->writeStatusFile();
+
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
+void RestServer::front_tv_on_handler(std::shared_ptr<restbed::Session> session) {
+    plugHandler->onTVFront();
+    plugHandler->writeStatusFile();
+
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
+void RestServer::front_tv_off_handler(std::shared_ptr<restbed::Session> session) {
+    plugHandler->offTVFront();
+    plugHandler->writeStatusFile();
+
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
+void RestServer::back_tv_on_handler(std::shared_ptr<restbed::Session> session) {
+    plugHandler->onTVBack();
+    plugHandler->writeStatusFile();
+
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
+void RestServer::back_tv_off_handler(std::shared_ptr<restbed::Session> session) {
+    plugHandler->offTVBack();
+    plugHandler->writeStatusFile();
+
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}

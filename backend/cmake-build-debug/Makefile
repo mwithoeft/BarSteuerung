@@ -223,6 +223,60 @@ src/LedController.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/LedController.cpp.s
 .PHONY : src/LedController.cpp.s
 
+src/PlugHandler.o: src/PlugHandler.cpp.o
+
+.PHONY : src/PlugHandler.o
+
+# target to build an object file
+src/PlugHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/PlugHandler.cpp.o
+.PHONY : src/PlugHandler.cpp.o
+
+src/PlugHandler.i: src/PlugHandler.cpp.i
+
+.PHONY : src/PlugHandler.i
+
+# target to preprocess a source file
+src/PlugHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/PlugHandler.cpp.i
+.PHONY : src/PlugHandler.cpp.i
+
+src/PlugHandler.s: src/PlugHandler.cpp.s
+
+.PHONY : src/PlugHandler.s
+
+# target to generate assembly for a file
+src/PlugHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/PlugHandler.cpp.s
+.PHONY : src/PlugHandler.cpp.s
+
+src/RCSwitch.o: src/RCSwitch.cpp.o
+
+.PHONY : src/RCSwitch.o
+
+# target to build an object file
+src/RCSwitch.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/RCSwitch.cpp.o
+.PHONY : src/RCSwitch.cpp.o
+
+src/RCSwitch.i: src/RCSwitch.cpp.i
+
+.PHONY : src/RCSwitch.i
+
+# target to preprocess a source file
+src/RCSwitch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/RCSwitch.cpp.i
+.PHONY : src/RCSwitch.cpp.i
+
+src/RCSwitch.s: src/RCSwitch.cpp.s
+
+.PHONY : src/RCSwitch.s
+
+# target to generate assembly for a file
+src/RCSwitch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/RCSwitch.cpp.s
+.PHONY : src/RCSwitch.cpp.s
+
 src/RestServer.o: src/RestServer.cpp.o
 
 .PHONY : src/RestServer.o
@@ -268,6 +322,12 @@ help:
 	@echo "... src/LedController.o"
 	@echo "... src/LedController.i"
 	@echo "... src/LedController.s"
+	@echo "... src/PlugHandler.o"
+	@echo "... src/PlugHandler.i"
+	@echo "... src/PlugHandler.s"
+	@echo "... src/RCSwitch.o"
+	@echo "... src/RCSwitch.i"
+	@echo "... src/RCSwitch.s"
 	@echo "... src/RestServer.o"
 	@echo "... src/RestServer.i"
 	@echo "... src/RestServer.s"

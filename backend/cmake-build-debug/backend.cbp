@@ -90,6 +90,12 @@
 		<Unit filename="/home/pi/development/backend/header/LedController.h">
 			<Option target="backend"/>
 		</Unit>
+		<Unit filename="/home/pi/development/backend/header/PlugHandler.h">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/header/RCSwitch.h">
+			<Option target="backend"/>
+		</Unit>
 		<Unit filename="/home/pi/development/backend/header/RestServer.h">
 			<Option target="backend"/>
 		</Unit>
@@ -106,6 +112,12 @@
 			<Option target="backend"/>
 		</Unit>
 		<Unit filename="/home/pi/development/backend/src/LedController.cpp">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/src/PlugHandler.cpp">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/src/RCSwitch.cpp">
 			<Option target="backend"/>
 		</Unit>
 		<Unit filename="/home/pi/development/backend/src/RestServer.cpp">
