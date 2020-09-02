@@ -5,12 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bar Steuerung</title>
-    <link rel="icon" type="image/png" href="./favicon.svg"/>
+    <link rel="icon" type="image/png" href="./favicon.svg" />
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 
 <body>
@@ -18,44 +18,76 @@
         <li>
             <div class="collapsible-header"><i class="material-icons">lightbulb_outline</i>Frontlicht</div>
             <div class="collapsible-body">
-                <a class="waves-effect waves-light btn" onclick="led_off()"><i class="material-icons left">power_settings_new</i>Ausschalten</a>
+                <a class="waves-effect waves-light btn" onclick="led_off()"><i
+                        class="material-icons left">power_settings_new</i>Ausschalten</a>
                 <p class="range-field" id="led_speed_slider_field">
                     <span>Langsam</span>
                     <span style="float: right;">Schnell</span>
-                    <input type="range" id="led_speed_slider" min="100" max="1200000" onchange="led_set_speed(this.value)"/>
+                    <input type="range" id="led_speed_slider" min="100" max="1200000"
+                        onchange="led_set_speed(this.value)" />
                 </p>
                 <div class="row">
                     <div class="col s12">
-                      <ul class="tabs" id="led_tabs">
+                        <ul class="tabs" id="led_tabs">
                             <li class="tab col s3"><a href="#led_simple_pattern">Einfache Muster</a></li>
                             <li class="tab col s3"><a href="#led_static_color">Statische Farbe</a></li>
                             <li class="tab col s3"><a href="#led_split">Aufteilen</a></li>
-                      </ul>
+                        </ul>
                     </div>
                     <div id="led_simple_pattern" class="col s12">
-                        <a class="waves-effect waves-light btn" onclick="led_static_rainbow()" style="width: 49%;"><i class="material-icons left">looks</i>Statisch</a>
-                        <a class="waves-effect waves-light btn" onclick="led_floating_rainbow()" style="width: 49%; float:right"><i class="material-icons left">looks</i>Laufend</a>
+                        <a class="waves-effect waves-light btn" onclick="led_static_rainbow()" style="width: 49%;"><i
+                                class="material-icons left">looks</i>Statisch</a>
+                        <a class="waves-effect waves-light btn" onclick="led_floating_rainbow()"
+                            style="width: 49%; float:right"><i class="material-icons left">looks</i>Laufend</a>
                     </div>
-                    <div id="led_static_color" class="col s12"><div id="colorpicker_led_static_color"></div></div>
+                    <div id="led_static_color" class="col s12">
+                        <div id="colorpicker_led_static_color"></div>
+                    </div>
                     <div id="led_split" class="col s12">
                         <div id="colorpicker_led_split"></div>
                         <div id="usercolors_led_split"></div>
-                        <a class="waves-effect waves-light btn" onclick="addLedUserColor()"><i class="material-icons left">addchart</i>Farbe hinzufügen</a>
-                        <a class="waves-effect waves-light btn" onclick="led_static_split()" style="width: 49%;"><i class="material-icons left">pause</i>Setzen</a>
-                        <a class="waves-effect waves-light btn" onclick="led_floating_split()" style="width: 49%; float:right"><i class="material-icons left">double_arrow</i>Setzen</a>
-                        <a class="waves-effect waves-light btn" onclick="led_pulse()"><i class="material-icons left">flash_on</i><i class="material-icons left">flash_off</i>Setzen</a>
+                        <a class="waves-effect waves-light btn" onclick="addLedUserColor()"><i
+                                class="material-icons left">addchart</i>Farbe hinzufügen</a>
+                        <a class="waves-effect waves-light btn" onclick="led_static_split()" style="width: 49%;"><i
+                                class="material-icons left">pause</i>Setzen</a>
+                        <a class="waves-effect waves-light btn" onclick="led_floating_split()"
+                            style="width: 49%; float:right"><i class="material-icons left">double_arrow</i>Setzen</a>
+                        <a class="waves-effect waves-light btn" onclick="led_pulse()"><i
+                                class="material-icons left">flash_on</i><i
+                                class="material-icons left">flash_off</i>Setzen</a>
                     </div>
-                  </div>
+                </div>
             </div>
         </li>
 
         <li>
-            <div class="collapsible-header"><i class="material-icons">highlight</i>Deckenlicht</div>
+            <div class="collapsible-header"><i class="material-icons">highlight</i>Arbeitslicht</div>
             <div class="collapsible-body">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat.</p>
             </div>
+        </li>
+
+        <li>
+            <div class="collapsible-header"><i class="material-icons">power</i>Steckdosen</div>
+            <div class="collapsible-body">
+                <a class="waves-effect waves-light btn" onclick="powerplug_all_on()" style="width: 49%;"><i
+                        class="material-icons left">flash_on</i>Alle</a>
+                <a class="waves-effect waves-light btn" onclick="powerplug_all_off()" style="width: 49%; float:right"><i
+                        class="material-icons left">flash_off</i>Alle</a>
+
+                <a class="waves-effect waves-light btn" id="tv_front_activate_button" onclick="powerplug_front_on()" style="width: 49%;"><i
+                        class="material-icons left">flash_on</i>TV SUB</a>
+                <a class="waves-effect waves-light btn" id="tv_front_deactivate_button" onclick="powerplug_front_off()" style="width: 49%; float:right"><i
+                        class="material-icons left">flash_off</i>TV SUB</a>
+
+                <a class="waves-effect waves-light btn" id="tv_back_activate_button" onclick="powerplug_back_on()" style="width: 49%;"><i
+                        class="material-icons left">flash_on</i>TV Hinten</a>
+                <a class="waves-effect waves-light btn" id="tv_back_deactivate_button" onclick="powerplug_back_off()" style="width: 49%; float:right"><i
+                        class="material-icons left">flash_off</i>TV Hinten</a>
+            </div>
+
         </li>
 
     </ul>

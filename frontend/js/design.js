@@ -76,3 +76,26 @@ var removeLedUserColor = function (button) {
     for (let i = 0; i < children.length; i++)
         children[i].dataset.index = i;
 }
+
+var changeTVFrontButton = function(status){
+    let frontTVActivateBtn = document.querySelector("#tv_front_activate_button");
+    let frontTVDeactivateBtn = document.querySelector("#tv_front_deactivate_button");
+    if (status) {
+        frontTVActivateBtn.classList.add("disabled");
+        frontTVDeactivateBtn.classList.remove("disabled");
+    } else {
+        frontTVActivateBtn.classList.remove("disabled");
+        frontTVDeactivateBtn.classList.add("disabled");
+    }
+}
+var changeTVBackButton = function(status){
+    let backTVActivateBtn = document.querySelector("#tv_back_activate_button");
+    let backTVDeactivateBtn = document.querySelector("#tv_back_deactivate_button");
+    if (status) {
+        backTVActivateBtn.classList.add("disabled");
+        backTVDeactivateBtn.classList.remove("disabled");
+    } else {
+        backTVActivateBtn.classList.remove("disabled");
+        backTVDeactivateBtn.classList.add("disabled");
+    }
+}
