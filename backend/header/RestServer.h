@@ -36,6 +36,7 @@ private:
     std::shared_ptr<restbed::Resource> splitFloatingResource;
     std::shared_ptr<restbed::Resource> setSpeedResource;
     std::shared_ptr<restbed::Resource> pulseResource;
+    std::shared_ptr<restbed::Resource> workingAreaLedResource;
 
     /** PowerPlugs Resources **/
     std::shared_ptr<restbed::Resource> powerPlugsStatusResource;
@@ -55,6 +56,7 @@ private:
     static void split_floating_handler(std::shared_ptr<restbed::Session >);
     static void set_speed_handler(std::shared_ptr<restbed::Session >);
     static void pulse_handler(std::shared_ptr<restbed::Session >);
+    static void wokring_area_led_handler(std::shared_ptr<restbed::Session >);
 
     /** PowerPlug Handler **/
     static void powerplugs_status_handler(std::shared_ptr<restbed::Session >);

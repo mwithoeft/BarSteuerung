@@ -55,6 +55,10 @@ bool RestServer::init() {
     pulseResource->set_path("/pulse");
     pulseResource->set_method_handler("GET", pulse_handler);
 
+    workingAreaLedResource = std::make_shared<restbed::Resource>();
+    workingAreaLedResource->set_path("/workingAreaColor");
+    workingAreaLedResource->set_method_handler("GET", wokring_area_led_handler);
+
     /** PowerPlugs Resources **/
     powerPlugsStatusResource = std::make_shared<restbed::Resource>();
     powerPlugsStatusResource->set_path("/powerPlugsStatus");
@@ -101,6 +105,7 @@ void RestServer::start(void (*ready_handler)(restbed::Service&)) {
     service->publish(splitFloatingResource);
     service->publish(setSpeedResource);
     service->publish(pulseResource);
+    service->publish(workingAreaLedResource);
 
     /** Power Plugs Resources **/
     service->publish(powerPlugsStatusResource);
@@ -215,6 +220,20 @@ void RestServer::set_speed_handler(std::shared_ptr<restbed::Session> session) {
     speedStream >> speed;
     ledController->setSpeed(speed);
 
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
+
+void RestServer::wokring_area_led_handler(const std::shared_ptr<restbed::Session> session) {
+    const auto request = session->get_request();
+    std::stringstream r(request->get_query_parameter("r"));
+    std::stringstream g(request->get_query_parameter("g"));
+    std::stringstream b(request->get_query_parameter("b"));
+    unsigned R, G, B;
+    r >> R;
+    g >> G;
+    b >> B;
+    ledController->setWorkingAreaColor(R, G, B);
     std::string returnStr = "OK";
     session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
 }

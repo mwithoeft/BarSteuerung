@@ -28,8 +28,26 @@ var colorPickerLedStaticColor = new iro.ColorPicker("#colorpicker_led_static_col
     display: "block",
 });
 
+var colorPickerLedWorkingArea = new iro.ColorPicker("#colorpicker_led_working_area", {
+    width: 250,
+    color: "#f00",
+    display: "block",
+});
+
 colorPickerLedStaticColor.on('input:end', function (color) {
     let request = `${address}staticColor?r=${color.rgb.r}&g=${color.rgb.g}&b=${color.rgb.b}`;
+    $.ajax({
+        url: request,
+        type: 'GET',
+        error: function (res) {
+            console.log(res);
+            M.toast({ html: 'Fehler!' })
+        }
+    });
+});
+
+colorPickerLedWorkingArea.on('input:end', function (color) {
+    let request = `${address}workingAreaColor?r=${color.rgb.r}&g=${color.rgb.g}&b=${color.rgb.b}`;
     $.ajax({
         url: request,
         type: 'GET',

@@ -33,6 +33,7 @@ public:
 
     /** Setter **/
     void setColor(unsigned char, unsigned char, unsigned char);
+    void setWorkingAreaColor(unsigned char, unsigned char, unsigned char);
     void setPattern(Pattern);
     void clearUserColors();
     void addUserColor(Color);
@@ -45,12 +46,13 @@ private:
 
     /** LED Settings **/
     ws281x::TSPIDriver* spi_dev_1;
-    static const unsigned N_PIXELS = 576;
+    static const unsigned N_PIXELS = 505;
+    static const unsigned WORKING_AREA_LEDS = 71;
     //Vorne sind 505
     //Hinten sind 71
 
     unsigned speed = 600050;
-    ws281x::TWS2812B arr_pixels[N_PIXELS];
+    ws281x::TWS2812B arr_pixels[N_PIXELS + WORKING_AREA_LEDS];
     void flush();
     Color color{0, 0, 0};
     std::vector<Color> colorVector;

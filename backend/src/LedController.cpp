@@ -156,3 +156,8 @@ void LedController::shift(){
         arr_pixels[i].RGB(colorVector[i].red, colorVector[i].green, colorVector[i].blue);
     }
 }
+
+void LedController::setWorkingAreaColor(unsigned char red, unsigned char green, unsigned char blue) {
+    for(unsigned i = N_PIXELS; i < N_PIXELS+WORKING_AREA_LEDS; i++) arr_pixels[i].RGB(red, green, blue);
+    patternChanged = true;
+}
