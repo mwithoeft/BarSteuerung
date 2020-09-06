@@ -139,7 +139,7 @@ void RestServer::off_handler(const std::shared_ptr<restbed::Session> session) {
     ledController->setColor(0, 0, 0);
     ledController->setPattern(LedController::Pattern::OFF);
 
-    std::string returnStr = "Test erfolgreich";
+    std::string returnStr = "OK";
 
     session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
 }

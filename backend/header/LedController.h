@@ -54,7 +54,7 @@ private:
     unsigned speed = 600050;
     ws281x::TWS2812B arr_pixels[N_PIXELS + WORKING_AREA_LEDS];
     void flush();
-    Color color{0, 0, 0};
+    Color color{255, 255, 255};
     std::vector<Color> colorVector;
     bool patternChanged = true;
     bool firstPatternRun = true;

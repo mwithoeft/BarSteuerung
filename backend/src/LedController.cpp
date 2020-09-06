@@ -11,7 +11,8 @@ LedController::~LedController() {
 
 bool LedController::init() {
     spi_dev_1 = new ws281x::TSPIDriver("/dev/spidev0.0", ws281x::HZ_SPI_NEOPIXEL);
-    patternMethod = &LedController::off;
+    patternMethod = &LedController::staticColor;
+    setWorkingAreaColor(255, 255, 255);
     return true;
 }
 
@@ -20,8 +21,8 @@ void LedController::loop(){
         mutex.lock();
         if (patternChanged) {
             ((*this).*patternMethod)();
-            flush();
         }
+        flush();
         mutex.unlock();
         std::this_thread::sleep_for(std::chrono::microseconds (speed));
     }
