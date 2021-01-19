@@ -1,4 +1,5 @@
 var led_tabs;
+var ceiling_tabs;
 var page_collapsible;
 
 var ledUserColorsSplit = [];
@@ -6,12 +7,16 @@ var ledUserColorsSplit = [];
 $(document).ready(function () {
     page_collapsible = M.Collapsible.init(document.querySelector("#page_collapsible"), {
         onOpenEnd: function (el) {
-            if (led_tabs.index == 0) {
+            if (el.id == "led_list_collapsible" && led_tabs.index == 0) {
                 fixLedTabIndicator();
+            }
+            if (el.id == "ceiling_light_list_collapsible" && ceiling_tabs.index == 0) {
+                fixCeilingTabIndicator();
             }
         }
     });
     led_tabs = M.Tabs.init(document.querySelector("#led_tabs"));
+    ceiling_tabs = M.Tabs.init(document.querySelector("#ceiling_tabs"));
 });
 
 var fixLedTabIndicator = function () {
@@ -20,6 +25,14 @@ var fixLedTabIndicator = function () {
     }
     if (!fixLedTabIndicator.done) led_tabs.select("led_simple_pattern");
     fixLedTabIndicator.done = true;
+}
+
+var fixCeilingTabIndicator = function () {
+    if (typeof fixCeilingTabIndicator.done == 'undefined') {
+        fixCeilingTabIndicator.done = false;
+    }
+    if (!fixCeilingTabIndicator.done) ceiling_tabs.select("ceiling_light_modes");
+    fixCeilingTabIndicator.done = true;
 }
 
 var colorPickerLedStaticColor = new iro.ColorPicker("#colorpicker_led_static_color", {
@@ -32,6 +45,37 @@ var colorPickerLedWorkingArea = new iro.ColorPicker("#colorpicker_led_working_ar
     width: 250,
     color: "#f00",
     display: "block",
+});
+
+var colorPickerCeilingKelvin = new iro.ColorPicker("#colorpicker_ceiling_kelvin", {
+    layout: [
+        { 
+          component: iro.ui.Slider,
+          options: {
+            sliderType: 'kelvin',
+            maxTemperature: 6500,
+            minTemperature: 2000
+          }
+        },
+      ]
+});
+
+var colorPickerCeilingValue = new iro.ColorPicker("#colorpicker_ceiling_value", {
+    layout: [
+        { 
+          component: iro.ui.Slider,
+          options: {
+            sliderType: 'value'
+          }
+        },
+      ]
+});
+
+colorPickerCeilingKelvin.on('input:end', function (input) {
+    console.log(input.kelvin);
+});
+colorPickerCeilingValue.on('input:end', function (input) {
+    console.log(input.value);
 });
 
 colorPickerLedStaticColor.on('input:end', function (color) {

@@ -15,7 +15,7 @@
 
 <body>
     <ul class="collapsible" id="page_collapsible">
-        <li>
+        <li id="led_list_collapsible">
             <div class="collapsible-header"><i class="material-icons">lightbulb_outline</i>Frontlicht</div>
             <div class="collapsible-body">
                 <a class="waves-effect waves-light btn" onclick="led_off()"><i
@@ -67,6 +67,69 @@
             </div>
         </li>
 
+        <li id="ceiling_light_list_collapsible">
+            <div class="collapsible-header"><i class="material-icons">wb_incandescent</i>Deckenlicht</div>
+            <div class="collapsible-body">
+                <div>
+                    <form action="#" id="ceiling_buttons_form" class="ceiling_buttons "style="min-width: 75px">
+                        <label>
+                            <input type="checkbox" class="filled-in" />
+                            <span>Dart 1</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" />
+                            <span>Dart 2</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" />
+                            <span>Bar 1</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" />
+                            <span>Bar 2</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" />
+                            <span>Bar 3</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" />
+                            <span>Bar 4</span>
+                        </label>
+                    </form>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col s12">
+                            <ul class="tabs" id="ceiling_tabs">
+                                <li class="tab col s2"><a href="#ceiling_light_modes">Einfache Muster</a></li>
+                                <li class="tab col s2"><a href="#ceiling_light_white">Weiß</a></li>
+                            </ul>
+                        </div>
+                        <div id="ceiling_light_modes">
+                            <p></p>
+                            <a class="waves-effect waves-light btn" onclick="ceiling_light_off()"><i
+                                    class="material-icons left icon_less_margin">flash_off</i>AUS</a>
+                            <a class="waves-effect waves-light btn" style="width: 49%;" onclick="ceiling_light_disco()"><i
+                                    class="material-icons left icon_less_margin">looks</i>DISCO</a>
+                            <a class="waves-effect waves-light btn" style="width: 49%; float:right" onclick="ceiling_light_police()"><i
+                                    class="material-icons left icon_less_margin">local_police</i>POLIZEI</a>
+                            <a class="waves-effect waves-light btn" style="width: 49%;" onclick="ceiling_light_random()"><i
+                                    class="material-icons left icon_less_margin">casino</i>ZUFALL</a>
+                            <a class="waves-effect waves-light btn" style="width: 49%; float:right" onclick="ceiling_light_strobe()"><i
+                                    class="material-icons left icon_less_margin">offline_bolt</i>STROBO</a>
+                        </div>
+                        <div id="ceiling_light_white">
+                            <p></p>
+                            <div id="colorpicker_ceiling_kelvin" style="padding-bottom: 20px;"></div>
+                            <div id="colorpicker_ceiling_value" style="padding-bottom: 20px;"></div>
+                            <a class="waves-effect waves-light btn"><i class="material-icons left icon_less_margin">flash_off</i>SETZEN</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
         <li>
             <div class="collapsible-header"><i class="material-icons">power</i>Steckdosen</div>
             <div class="collapsible-body">
@@ -75,15 +138,15 @@
                 <a class="waves-effect waves-light btn" onclick="powerplug_all_off()" style="width: 49%; float:right"><i
                         class="material-icons left">flash_off</i>Alle</a>
 
-                <a class="waves-effect waves-light btn" id="tv_front_activate_button" onclick="powerplug_front_on()" style="width: 49%;"><i
-                        class="material-icons left">flash_on</i>TV SUB</a>
-                <a class="waves-effect waves-light btn" id="tv_front_deactivate_button" onclick="powerplug_front_off()" style="width: 49%; float:right"><i
-                        class="material-icons left">flash_off</i>TV SUB</a>
+                <a class="waves-effect waves-light btn" id="tv_front_activate_button" onclick="powerplug_front_on()"
+                    style="width: 49%;"><i class="material-icons left">flash_on</i>TV SUB</a>
+                <a class="waves-effect waves-light btn" id="tv_front_deactivate_button" onclick="powerplug_front_off()"
+                    style="width: 49%; float:right"><i class="material-icons left">flash_off</i>TV SUB</a>
 
-                <a class="waves-effect waves-light btn" id="tv_back_activate_button" onclick="powerplug_back_on()" style="width: 49%;"><i
-                        class="material-icons left">flash_on</i>TV Hinten</a>
-                <a class="waves-effect waves-light btn" id="tv_back_deactivate_button" onclick="powerplug_back_off()" style="width: 49%; float:right"><i
-                        class="material-icons left">flash_off</i>TV Hinten</a>
+                <a class="waves-effect waves-light btn" id="tv_back_activate_button" onclick="powerplug_back_on()"
+                    style="width: 49%;"><i class="material-icons left">flash_on</i>TV Hinten</a>
+                <a class="waves-effect waves-light btn" id="tv_back_deactivate_button" onclick="powerplug_back_off()"
+                    style="width: 49%; float:right"><i class="material-icons left">flash_off</i>TV Hinten</a>
             </div>
 
         </li>
@@ -98,6 +161,7 @@
 
 
     <script src="js/design.js"></script>
+    <script src="js/ceiling_light.js"></script>
     <script src="js/requests.js"></script>
 
 </body>
