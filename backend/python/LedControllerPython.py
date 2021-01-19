@@ -104,4 +104,15 @@ def exec_query(mode, r, g, b, bulbs, kelvin, brightness):
     print("Kelvin in Python:", kelvin)
     print("Brightness in Python:", brightness)
 
-    return True
+    if mode == "OFF":
+        return bulb_off(bulbs)
+    elif mode == "DISCO":
+        return bulb_disco(bulbs)
+    elif mode == "POLICE":
+        return bulb_police(bulbs)
+    elif mode == "RANDOM":
+        return bulb_random(bulbs)
+    elif mode == "STROBE":
+        return bulb_strobe(bulbs)
+    else:
+        return False
