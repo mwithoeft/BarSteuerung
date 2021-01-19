@@ -1,0 +1,9 @@
+[INFO] Starting LedController thread...
+[INFO] LedController thread started.
+
+[INFO] Initializing BulbController...
+0
+[INFO] BulbController initialized.
+
+[INFO] Starting RestServer...
+[INFO] RestServer running.

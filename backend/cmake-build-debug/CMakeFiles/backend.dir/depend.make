@@ -4,18 +4,37 @@
 CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o: ../lib/ws281x/ws281x.cpp
 CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o: ../lib/ws281x/ws281x.hpp
 
+CMakeFiles/backend.dir/main.cpp.o: ../header/BulbController.h
 CMakeFiles/backend.dir/main.cpp.o: ../header/LedController.h
+CMakeFiles/backend.dir/main.cpp.o: ../header/PlugHandler.h
+CMakeFiles/backend.dir/main.cpp.o: ../header/RCSwitch.h
 CMakeFiles/backend.dir/main.cpp.o: ../header/RestServer.h
+CMakeFiles/backend.dir/main.cpp.o: ../header/pyhelper.h
 CMakeFiles/backend.dir/main.cpp.o: ../lib/ws281x/ws281x.hpp
 CMakeFiles/backend.dir/main.cpp.o: ../main.cpp
+
+CMakeFiles/backend.dir/src/BulbController.cpp.o: ../header/BulbController.h
+CMakeFiles/backend.dir/src/BulbController.cpp.o: ../header/pyhelper.h
+CMakeFiles/backend.dir/src/BulbController.cpp.o: ../src/BulbController.cpp
 
 CMakeFiles/backend.dir/src/LedController.cpp.o: ../header/ColorConverter.h
 CMakeFiles/backend.dir/src/LedController.cpp.o: ../header/LedController.h
 CMakeFiles/backend.dir/src/LedController.cpp.o: ../lib/ws281x/ws281x.hpp
 CMakeFiles/backend.dir/src/LedController.cpp.o: ../src/LedController.cpp
 
+CMakeFiles/backend.dir/src/PlugHandler.cpp.o: ../header/PlugHandler.h
+CMakeFiles/backend.dir/src/PlugHandler.cpp.o: ../header/RCSwitch.h
+CMakeFiles/backend.dir/src/PlugHandler.cpp.o: ../src/PlugHandler.cpp
+
+CMakeFiles/backend.dir/src/RCSwitch.cpp.o: ../header/RCSwitch.h
+CMakeFiles/backend.dir/src/RCSwitch.cpp.o: ../src/RCSwitch.cpp
+
+CMakeFiles/backend.dir/src/RestServer.cpp.o: ../header/BulbController.h
 CMakeFiles/backend.dir/src/RestServer.cpp.o: ../header/LedController.h
+CMakeFiles/backend.dir/src/RestServer.cpp.o: ../header/PlugHandler.h
+CMakeFiles/backend.dir/src/RestServer.cpp.o: ../header/RCSwitch.h
 CMakeFiles/backend.dir/src/RestServer.cpp.o: ../header/RestServer.h
+CMakeFiles/backend.dir/src/RestServer.cpp.o: ../header/pyhelper.h
 CMakeFiles/backend.dir/src/RestServer.cpp.o: ../lib/ws281x/ws281x.hpp
 CMakeFiles/backend.dir/src/RestServer.cpp.o: ../src/RestServer.cpp
 

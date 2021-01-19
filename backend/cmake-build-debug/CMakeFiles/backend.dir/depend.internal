@@ -5,17 +5,36 @@ CMakeFiles/backend.dir/lib/ws281x/ws281x.cpp.o
  /home/pi/development/backend/lib/ws281x/ws281x.cpp
  /home/pi/development/backend/lib/ws281x/ws281x.hpp
 CMakeFiles/backend.dir/main.cpp.o
+ /home/pi/development/backend/header/BulbController.h
  /home/pi/development/backend/header/LedController.h
+ /home/pi/development/backend/header/PlugHandler.h
+ /home/pi/development/backend/header/RCSwitch.h
  /home/pi/development/backend/header/RestServer.h
+ /home/pi/development/backend/header/pyhelper.h
  /home/pi/development/backend/lib/ws281x/ws281x.hpp
  /home/pi/development/backend/main.cpp
+CMakeFiles/backend.dir/src/BulbController.cpp.o
+ /home/pi/development/backend/header/BulbController.h
+ /home/pi/development/backend/header/pyhelper.h
+ /home/pi/development/backend/src/BulbController.cpp
 CMakeFiles/backend.dir/src/LedController.cpp.o
  /home/pi/development/backend/header/ColorConverter.h
  /home/pi/development/backend/header/LedController.h
  /home/pi/development/backend/lib/ws281x/ws281x.hpp
  /home/pi/development/backend/src/LedController.cpp
+CMakeFiles/backend.dir/src/PlugHandler.cpp.o
+ /home/pi/development/backend/header/PlugHandler.h
+ /home/pi/development/backend/header/RCSwitch.h
+ /home/pi/development/backend/src/PlugHandler.cpp
+CMakeFiles/backend.dir/src/RCSwitch.cpp.o
+ /home/pi/development/backend/header/RCSwitch.h
+ /home/pi/development/backend/src/RCSwitch.cpp
 CMakeFiles/backend.dir/src/RestServer.cpp.o
+ /home/pi/development/backend/header/BulbController.h
  /home/pi/development/backend/header/LedController.h
+ /home/pi/development/backend/header/PlugHandler.h
+ /home/pi/development/backend/header/RCSwitch.h
  /home/pi/development/backend/header/RestServer.h
+ /home/pi/development/backend/header/pyhelper.h
  /home/pi/development/backend/lib/ws281x/ws281x.hpp
  /home/pi/development/backend/src/RestServer.cpp

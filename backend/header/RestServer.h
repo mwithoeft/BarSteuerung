@@ -8,10 +8,11 @@
 
 #include "LedController.h"
 #include "PlugHandler.h"
+#include "BulbController.h"
 
 class RestServer {
 public:
-    RestServer(LedController*);
+    RestServer(LedController*, BulbController*);
     ~RestServer();
 
     bool init();
@@ -23,6 +24,7 @@ private:
 
     restbed::Service* service;
     static LedController* ledController;
+    static BulbController* bulbController;
     static PlugHandler* plugHandler;
 
     std::shared_ptr<restbed::Settings> settings;
@@ -47,6 +49,9 @@ private:
     std::shared_ptr<restbed::Resource> backTVOnResource;
     std::shared_ptr<restbed::Resource> backTVOffResource;
 
+    /** Ceiling Light Resource **/
+    std::shared_ptr<restbed::Resource> ceilingLightResource;
+
     /** LED Handler **/
     static void static_color_handler(std::shared_ptr<restbed::Session >);
     static void off_handler(std::shared_ptr<restbed::Session >);
@@ -67,7 +72,8 @@ private:
     static void back_tv_on_handler(std::shared_ptr<restbed::Session >);
     static void back_tv_off_handler(std::shared_ptr<restbed::Session >);
 
-
+    /** Ceiling Light Handler **/
+    static void ceiling_light_handler(std::shared_ptr<restbed::Session >);
 
     static void parseStrToVec(std::string, std::vector<int>&);
 };

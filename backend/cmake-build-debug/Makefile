@@ -196,6 +196,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/BulbController.o: src/BulbController.cpp.o
+
+.PHONY : src/BulbController.o
+
+# target to build an object file
+src/BulbController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/BulbController.cpp.o
+.PHONY : src/BulbController.cpp.o
+
+src/BulbController.i: src/BulbController.cpp.i
+
+.PHONY : src/BulbController.i
+
+# target to preprocess a source file
+src/BulbController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/BulbController.cpp.i
+.PHONY : src/BulbController.cpp.i
+
+src/BulbController.s: src/BulbController.cpp.s
+
+.PHONY : src/BulbController.s
+
+# target to generate assembly for a file
+src/BulbController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend.dir/build.make CMakeFiles/backend.dir/src/BulbController.cpp.s
+.PHONY : src/BulbController.cpp.s
+
 src/LedController.o: src/LedController.cpp.o
 
 .PHONY : src/LedController.o
@@ -319,6 +346,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/BulbController.o"
+	@echo "... src/BulbController.i"
+	@echo "... src/BulbController.s"
 	@echo "... src/LedController.o"
 	@echo "... src/LedController.i"
 	@echo "... src/LedController.s"

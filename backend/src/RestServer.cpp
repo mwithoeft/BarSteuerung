@@ -3,17 +3,20 @@
 #include "../header/RestServer.h"
 
 LedController* RestServer::ledController;
+BulbController* RestServer::bulbController;
 PlugHandler* RestServer::plugHandler;
 
-RestServer::RestServer(LedController* ledController) {
+RestServer::RestServer(LedController* ledController, BulbController* bulbController) {
     service = new restbed::Service();
 
     RestServer::plugHandler = new PlugHandler();
     RestServer::ledController = ledController;
+    RestServer::bulbController = bulbController;
 }
 
 RestServer::~RestServer() {
     delete service;
+    delete RestServer::plugHandler;
 }
 
 bool RestServer::init() {
@@ -88,6 +91,10 @@ bool RestServer::init() {
     backTVOffResource->set_path("/backTVOff");
     backTVOffResource->set_method_handler("GET", back_tv_off_handler);
 
+    ceilingLightResource = std::make_shared<restbed::Resource>();
+    ceilingLightResource->set_path("/ceilingLight");
+    ceilingLightResource->set_method_handler("GET", ceiling_light_handler);
+
     settings = std::make_shared<restbed::Settings>();
     settings->set_port(PORT);
     settings->set_default_header("Connection", "close");
@@ -115,6 +122,9 @@ void RestServer::start(void (*ready_handler)(restbed::Service&)) {
     service->publish(frontTVOffResource);
     service->publish(backTVOnResource);
     service->publish(backTVOffResource);
+
+    /** Ceiling Light Resource **/
+    service->publish(ceilingLightResource);
 
     settings->set_default_header( "Access-Control-Allow-Origin", "*" );
     service->set_ready_handler(ready_handler);
@@ -283,4 +293,20 @@ void RestServer::back_tv_off_handler(std::shared_ptr<restbed::Session> session) 
 
     std::string returnStr = "OK";
     session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
+
+/** Ceiling Light Handler **/
+void RestServer::ceiling_light_handler(std::shared_ptr<restbed::Session> session) {
+    const auto request = session->get_request();
+    std::string mode = request->get_query_parameter("mode");
+    std::string r = request->get_query_parameter("r");
+    std::string g = request->get_query_parameter("g");
+    std::string b = request->get_query_parameter("b");
+    std::string bulbs =  request->get_query_parameter("bulbs");
+    std::string kelvin = request->get_query_parameter("kelvin");
+    std::string brightness = request->get_query_parameter("brightness");
+
+    bulbController->setValues(mode, r, g, b, bulbs, kelvin, brightness);
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr, { { "Content-Length", std::to_string(returnStr.size()) } } );
 }

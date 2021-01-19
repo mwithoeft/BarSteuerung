@@ -84,6 +84,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/pi/development/backend/header/BulbController.h">
+			<Option target="backend"/>
+		</Unit>
 		<Unit filename="/home/pi/development/backend/header/ColorConverter.h">
 			<Option target="backend"/>
 		</Unit>
@@ -99,6 +102,9 @@
 		<Unit filename="/home/pi/development/backend/header/RestServer.h">
 			<Option target="backend"/>
 		</Unit>
+		<Unit filename="/home/pi/development/backend/header/pyhelper.h">
+			<Option target="backend"/>
+		</Unit>
 		<Unit filename="/home/pi/development/backend/lib/ws281x/util.hpp">
 			<Option target="backend"/>
 		</Unit>
@@ -109,6 +115,9 @@
 			<Option target="backend"/>
 		</Unit>
 		<Unit filename="/home/pi/development/backend/main.cpp">
+			<Option target="backend"/>
+		</Unit>
+		<Unit filename="/home/pi/development/backend/src/BulbController.cpp">
 			<Option target="backend"/>
 		</Unit>
 		<Unit filename="/home/pi/development/backend/src/LedController.cpp">
