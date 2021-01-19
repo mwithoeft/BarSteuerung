@@ -18,14 +18,13 @@ int main() {
     std::thread ledThread(&LedController::loop, &ledController);
     std::cout << "[INFO] LedController thread started." << std::endl << std::endl;
 
-    std::cout << "[INFO] Starting BulbController thread..." << std::endl;
+    std::cout << "[INFO] Initializing BulbController..." << std::endl;
     BulbController bulbController;
     if (!bulbController.setup()) {
-        std::cerr << "[ERROR] BulbController could not be started" << std::endl;
+        std::cerr << "[ERROR] BulbController could not be initialized" << std::endl;
         return EXIT_FAILURE;
     }
-    std::thread bulbThread(&BulbController::loop, &bulbController);
-    std::cout << "[INFO] BulbController thread started." << std::endl << std::endl;
+    std::cout << "[INFO] BulbController initialized." << std::endl << std::endl;
 
 
     RestServer restServer(&ledController, &bulbController);
@@ -38,7 +37,6 @@ int main() {
 
     ledThread.join();
     restThread.join();
-    bulbThread.join();
 
     return EXIT_SUCCESS;
 }

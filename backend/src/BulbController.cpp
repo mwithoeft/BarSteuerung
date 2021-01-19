@@ -12,7 +12,7 @@ BulbController::~BulbController() {
 }
 
 
-void BulbController::forwardQuery(std::string mode, std::string r, std::string g, std::string b, std::string bulbs, std::string kelvin, std::string brightness) {
+bool BulbController::forwardQuery(std::string mode, std::string r, std::string g, std::string b, std::string bulbs, std::string kelvin, std::string brightness) {
     if(pFunc && PyCallable_Check(pFunc)) {
         CPyObject pArgs = PyTuple_New(7);
         PyTuple_SetItem(pArgs, 0, PyUnicode_FromString(mode.c_str()));
@@ -23,7 +23,10 @@ void BulbController::forwardQuery(std::string mode, std::string r, std::string g
         PyTuple_SetItem(pArgs, 5, PyUnicode_FromString(kelvin.c_str()));
         PyTuple_SetItem(pArgs, 6, PyUnicode_FromString(brightness.c_str()));
         CPyObject pValue = PyObject_CallObject(pFunc, pArgs);
+
+        return (PyObject_IsTrue(pValue));
     }
+    return false;
 }
 
 bool BulbController::setup() {
@@ -34,32 +37,6 @@ bool BulbController::setup() {
         return true;
     }
     return false;
-}
-
-void BulbController::loop() {
-    for (;;) {
-        mutex.lock();
-        if (newBulbCall) {
-            this->forwardQuery(this->mode, this->r, this->g, this->b, this->bulbs, this->kelvin, this->brightness);
-            this->newBulbCall = false;
-        }
-        mutex.unlock();
-        std::this_thread::sleep_for(std::chrono::microseconds (600050));
-    }
-}
-
-void BulbController::setValues(std::string mode, std::string r, std::string g, std::string b, std::string bulbs, std::string kelvin, std::string brightness) {
-    mutex.lock();
-    this->mode = mode;
-    this->r = r;
-    this->g = g;
-    this->b = b;
-    this->bulbs = bulbs;
-    this->kelvin = kelvin;
-    this->brightness = brightness;
-
-    this->newBulbCall = true;
-    mutex.unlock();
 }
 
 
