@@ -307,7 +307,7 @@ void RestServer::ceiling_light_handler(std::shared_ptr<restbed::Session> session
     std::string brightness = request->get_query_parameter("brightness");
 
     std::string returnStr = "WARNING";
-    if (bulbController->forwardQuery(mode, r, g, b, bulbs, kelvin, brightness)) {
+    if (bulbs != "" && bulbController->forwardQuery(mode, r, g, b, bulbs, kelvin, brightness)) {
         returnStr = "OK";
     }
     session->close(restbed::OK, returnStr, { { "Content-Length", std::to_string(returnStr.size()) } } );

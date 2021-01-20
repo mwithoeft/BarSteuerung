@@ -71,11 +71,22 @@ var colorPickerCeilingValue = new iro.ColorPicker("#colorpicker_ceiling_value", 
       ]
 });
 
-colorPickerCeilingKelvin.on('input:end', function (input) {
-    console.log(input.kelvin);
-});
-colorPickerCeilingValue.on('input:end', function (input) {
-    console.log(input.value);
+var colorPickerCeilingStaticColor = new iro.ColorPicker("#colorpicker_ceiling_static_color", {
+    width: 250,
+    color: "#f00",
+    display: "block",
+    layout: [
+        { 
+          component: iro.ui.Wheel,
+          options: {}
+        },
+        {
+            component: iro.ui.Slider,
+            options: {
+                sliderType: 'value'
+            }
+        },
+    ]
 });
 
 colorPickerLedStaticColor.on('input:end', function (color) {
@@ -138,6 +149,18 @@ var removeLedUserColor = function (button) {
     for (let i = 0; i < children.length; i++)
         children[i].dataset.index = i;
 }
+
+colorPickerCeilingKelvin.on('input:end', function (input) {
+    ceiling_light_white(Math.ceil(input.kelvin), Math.ceil(colorPickerCeilingValue.color.value));
+});
+colorPickerCeilingValue.on('input:end', function (input) {
+    ceiling_light_white(Math.ceil(colorPickerCeilingKelvin.color.kelvin), Math.ceil(input.value));
+});
+
+colorPickerCeilingStaticColor.on('input:end', function (color) {
+    if (color.value < 1) color.value = 1;
+    ceiling_static_color(color.rgb.r, color.rgb.g, color.rgb.b, color.value);
+});
 
 var changeTVFrontButton = function(status){
     let frontTVActivateBtn = document.querySelector("#tv_front_activate_button");

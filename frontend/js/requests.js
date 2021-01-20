@@ -192,7 +192,7 @@ var powerplug_back_off = function () {
     });
 }
 
-var ceiling_light_request = function () {
+var ceiling_light_request = function (ceiling_light_object) {
     let query = `mode=${ceiling_light_object.mode}&r=${ceiling_light_object.r}&g=${ceiling_light_object.g}&b=${ceiling_light_object.b}&bulbs=${ceiling_light_object.bulbs}&kelvin=${ceiling_light_object.kelvin}&brightness=${ceiling_light_object.brightness}`;
     $.ajax({
         url: `${address}ceilingLight?${query}`,

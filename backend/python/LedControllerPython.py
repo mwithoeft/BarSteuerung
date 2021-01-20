@@ -28,16 +28,15 @@ def bulb_off(bulb_string):
     return success_all
 
 
-def bulb_default(bulb_string):
+def bulb_white(bulb_string, kelvin, brightness):
     input_bulbs = string_to_array(bulb_string)
     success_all = True
     for num, bulb in enumerate(allBulbsArray):
         if num in input_bulbs:
             try:
                 bulb.set_rgb(255, 255, 255)
-                bulb.set_brightness(100)
-                bulb.set_color_temp(6500)
-                bulb.set_default()
+                bulb.set_color_temp(kelvin)
+                bulb.set_brightness(brightness)
             except main.BulbException:
                 success_all = False
     return success_all
@@ -95,17 +94,32 @@ def bulb_strobe(bulb_string):
     return success_all
 
 
+def bulb_color(bulb_string, r, g, b, brightness):
+    input_bulbs = string_to_array(bulb_string)
+    success_all = True
+    for num, bulb in enumerate(allBulbsArray):
+        if num in input_bulbs:
+            try:
+                bulb.set_rgb(r, g, b)
+                bulb.set_brightness(brightness)
+            except main.BulbException:
+                success_all = False
+    return success_all
+
+
 def exec_query(mode, r, g, b, bulbs, kelvin, brightness):
-    print("Mode in Python:", mode)
+    """print("Mode in Python:", mode)
     print("R in Python:", r)
     print("G in Python:", g)
     print("B in Python:", b)
     print("Bulbs in Python:", bulbs)
     print("Kelvin in Python:", kelvin)
-    print("Brightness in Python:", brightness)
+    print("Brightness in Python:", brightness)"""
 
     if mode == "OFF":
         return bulb_off(bulbs)
+    elif mode == "WHITE":
+        return bulb_white(bulbs, int(kelvin), int(brightness))
     elif mode == "DISCO":
         return bulb_disco(bulbs)
     elif mode == "POLICE":
@@ -114,5 +128,7 @@ def exec_query(mode, r, g, b, bulbs, kelvin, brightness):
         return bulb_random(bulbs)
     elif mode == "STROBE":
         return bulb_strobe(bulbs)
+    elif mode == "STATIC_COLOR":
+        return bulb_color(bulbs, int(r), int(g), int(b), int(brightness))
     else:
         return False
