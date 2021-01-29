@@ -7,7 +7,9 @@ bulb3 = Bulb("192.168.178.79", auto_on=True)
 bulb4 = Bulb("192.168.178.80", auto_on=True)
 bulb5 = Bulb("192.168.178.81", auto_on=True)
 bulb6 = Bulb("192.168.178.82", auto_on=True)
-allBulbsArray = [bulb1, bulb2, bulb3, bulb4, bulb5, bulb6]
+bulb7 = Bulb("192.168.178.83", auto_on=True)
+bulb8 = Bulb("192.168.178.84", auto_on=True)
+allBulbsArray = [bulb1, bulb2, bulb3, bulb4, bulb5, bulb6, bulb7, bulb8]
 
 
 def string_to_array(bulb_string):
