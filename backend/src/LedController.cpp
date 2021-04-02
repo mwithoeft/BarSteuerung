@@ -159,6 +159,8 @@ void LedController::shift(){
 }
 
 void LedController::setWorkingAreaColor(unsigned char red, unsigned char green, unsigned char blue) {
+    mutex.lock();
     for(unsigned i = N_PIXELS; i < N_PIXELS+WORKING_AREA_LEDS; i++) arr_pixels[i].RGB(red, green, blue);
     patternChanged = true;
+    mutex.unlock();
 }

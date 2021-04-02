@@ -20,6 +20,20 @@ var selected_light_bulbs = function() {
     ceiling_light_object.bulbs = bulbs;
 }
 
+var select_all_bulbs = function() {
+    let inputs = document.forms["ceiling_buttons_form"].getElementsByTagName("input");
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].checked = true;
+    }
+}
+
+var deselect_all_bulbs = function() {
+    let inputs = document.forms["ceiling_buttons_form"].getElementsByTagName("input");
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].checked = false;
+    }
+}
+
 var ceiling_light_disco = function() {
     selected_light_bulbs();
     ceiling_light_object.mode = "DISCO";

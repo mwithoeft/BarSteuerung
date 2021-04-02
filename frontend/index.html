@@ -71,6 +71,12 @@
             <div class="collapsible-header"><i class="material-icons">wb_incandescent</i>Deckenlicht</div>
             <div class="collapsible-body">
                 <div>
+                    <a class="waves-effect waves-light btn" style="width: 49%;" onclick="select_all_bulbs()"><i
+                        class="material-icons left icon_less_margin">done_all</i>ALLE</a>
+                    <a class="waves-effect waves-light btn" style="width: 49%; float:right" onclick="deselect_all_bulbs()"><i
+                        class="material-icons left icon_less_margin">remove_done</i>KEINE</a>
+                </div>
+                <div>
                     <form action="#" id="ceiling_buttons_form" class="ceiling_buttons "style="min-width: 75px">
                         <label>
                             <input type="checkbox" class="filled-in" />
@@ -103,6 +109,10 @@
                         <label>
                             <input type="checkbox" class="filled-in" />
                             <span>Gang 2</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="filled-in" />
+                            <span>Groß</span>
                         </label>
                     </form>
                 </div>

@@ -47,7 +47,7 @@ private:
     /** LED Settings **/
     ws281x::TSPIDriver* spi_dev_1;
     static const unsigned N_PIXELS = 505;
-    static const unsigned WORKING_AREA_LEDS = 71;
+    static const unsigned WORKING_AREA_LEDS = 151;
     //Vorne sind 505
     //Hinten sind 71
 

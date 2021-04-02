@@ -9,7 +9,13 @@ bulb5 = Bulb("192.168.178.81", auto_on=True)
 bulb6 = Bulb("192.168.178.82", auto_on=True)
 bulb7 = Bulb("192.168.178.83", auto_on=True)
 bulb8 = Bulb("192.168.178.84", auto_on=True)
-allBulbsArray = [bulb1, bulb2, bulb3, bulb4, bulb5, bulb6, bulb7, bulb8]
+
+ceiling1 = Bulb("192.168.178.87", auto_on=True)
+allBulbsArray = [bulb1, bulb2, bulb3, bulb4, bulb5, bulb6, bulb7, bulb8, ceiling1]
+""" 
+    1) ceiling1 = MAIN
+    2) ceiling1 = AMBIENT
+"""
 
 
 def string_to_array(bulb_string):
@@ -36,9 +42,18 @@ def bulb_white(bulb_string, kelvin, brightness):
     for num, bulb in enumerate(allBulbsArray):
         if num in input_bulbs:
             try:
-                bulb.set_rgb(255, 255, 255)
-                bulb.set_color_temp(kelvin)
-                bulb.set_brightness(brightness)
+                if bulb == ceiling1:
+                    kelvin = 2700 if kelvin < 2700 else kelvin
+                    if brightness == 0:
+                        bulb.turn_off(LightType.Main)
+                        bulb.turn_on(LightType.Ambient)
+                    else:
+                        bulb.set_color_temp(kelvin, LightType.Main)
+                        bulb.set_brightness(brightness, LightType.Main)
+                else:
+                    bulb.set_rgb(255, 255, 255)
+                    bulb.set_color_temp(kelvin)
+                    bulb.set_brightness(brightness)
             except main.BulbException:
                 success_all = False
     return success_all
@@ -51,7 +66,11 @@ def bulb_disco(bulb_string):
     for num, bulb in enumerate(allBulbsArray):
         if num in input_bulbs:
             try:
-                bulb.start_flow(disco_flow)
+                if bulb == ceiling1:
+                    bulb.turn_on(LightType.Ambient)
+                    bulb.start_flow(disco_flow, LightType.Ambient)
+                else:
+                    bulb.start_flow(disco_flow)
             except main.BulbException:
                 success_all = False
     return success_all
@@ -64,7 +83,11 @@ def bulb_police(bulb_string):
     for num, bulb in enumerate(allBulbsArray):
         if num in input_bulbs:
             try:
-                bulb.start_flow(police_flow)
+                if bulb == ceiling1:
+                    bulb.turn_on(LightType.Ambient)
+                    bulb.start_flow(police_flow, LightType.Ambient)
+                else:
+                    bulb.start_flow(police_flow)
             except main.BulbException:
                 success_all = False
     return success_all
@@ -77,7 +100,11 @@ def bulb_random(bulb_string):
     for num, bulb in enumerate(allBulbsArray):
         if num in input_bulbs:
             try:
-                bulb.start_flow(random_flow)
+                if bulb == ceiling1:
+                    bulb.turn_on(LightType.Ambient)
+                    bulb.start_flow(random_flow, LightType.Ambient)
+                else:
+                    bulb.start_flow(random_flow)
             except main.BulbException:
                 success_all = False
     return success_all
@@ -90,7 +117,11 @@ def bulb_strobe(bulb_string):
     for num, bulb in enumerate(allBulbsArray):
         if num in input_bulbs:
             try:
-                bulb.start_flow(strobe_flow)
+                if bulb == ceiling1:
+                    bulb.turn_on(LightType.Ambient)
+                    bulb.start_flow(strobe_flow, LightType.Ambient)
+                else:
+                    bulb.start_flow(strobe_flow)
             except main.BulbException:
                 success_all = False
     return success_all
@@ -102,8 +133,16 @@ def bulb_color(bulb_string, r, g, b, brightness):
     for num, bulb in enumerate(allBulbsArray):
         if num in input_bulbs:
             try:
-                bulb.set_rgb(r, g, b)
-                bulb.set_brightness(brightness)
+                if bulb == ceiling1:
+                    if brightness == 1:
+                        bulb.turn_off(LightType.Ambient)
+                    else:
+                        bulb.turn_on(LightType.Ambient)
+                        bulb.set_rgb(r, g, b, LightType.Ambient)
+                        bulb.set_brightness(brightness, LightType.Ambient)
+                else:
+                    bulb.set_rgb(r, g, b)
+                    bulb.set_brightness(brightness)
             except main.BulbException:
                 success_all = False
     return success_all
