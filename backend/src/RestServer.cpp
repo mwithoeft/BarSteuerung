@@ -60,7 +60,11 @@ bool RestServer::init() {
 
     workingAreaLedResource = std::make_shared<restbed::Resource>();
     workingAreaLedResource->set_path("/workingAreaColor");
-    workingAreaLedResource->set_method_handler("GET", wokring_area_led_handler);
+    workingAreaLedResource->set_method_handler("GET", working_area_led_handler);
+
+    shelfLedResource = std::make_shared<restbed::Resource>();
+    shelfLedResource->set_path("/shelfColor");
+    shelfLedResource->set_method_handler("GET", shelf_led_handler);
 
     /** PowerPlugs Resources **/
     powerPlugsStatusResource = std::make_shared<restbed::Resource>();
@@ -113,6 +117,7 @@ void RestServer::start(void (*ready_handler)(restbed::Service&)) {
     service->publish(setSpeedResource);
     service->publish(pulseResource);
     service->publish(workingAreaLedResource);
+    service->publish(shelfLedResource);
 
     /** Power Plugs Resources **/
     service->publish(powerPlugsStatusResource);
@@ -234,7 +239,7 @@ void RestServer::set_speed_handler(std::shared_ptr<restbed::Session> session) {
     session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
 }
 
-void RestServer::wokring_area_led_handler(const std::shared_ptr<restbed::Session> session) {
+void RestServer::working_area_led_handler(const std::shared_ptr<restbed::Session> session) {
     const auto request = session->get_request();
     std::stringstream r(request->get_query_parameter("r"));
     std::stringstream g(request->get_query_parameter("g"));
@@ -244,6 +249,20 @@ void RestServer::wokring_area_led_handler(const std::shared_ptr<restbed::Session
     g >> G;
     b >> B;
     ledController->setWorkingAreaColor(R, G, B);
+    std::string returnStr = "OK";
+    session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
+}
+
+void RestServer::shelf_led_handler(const std::shared_ptr<restbed::Session> session) {
+    const auto request = session->get_request();
+    std::stringstream r(request->get_query_parameter("r"));
+    std::stringstream g(request->get_query_parameter("g"));
+    std::stringstream b(request->get_query_parameter("b"));
+    unsigned R, G, B;
+    r >> R;
+    g >> G;
+    b >> B;
+    ledController->setShelfColor(R, G, B);
     std::string returnStr = "OK";
     session->close(restbed::OK, returnStr.c_str(), { { "Content-Length", std::to_string(returnStr.size()) } } );
 }

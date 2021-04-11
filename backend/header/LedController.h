@@ -34,6 +34,7 @@ public:
     /** Setter **/
     void setColor(unsigned char, unsigned char, unsigned char);
     void setWorkingAreaColor(unsigned char, unsigned char, unsigned char);
+    void setShelfColor(unsigned char, unsigned char, unsigned char);
     void setPattern(Pattern);
     void clearUserColors();
     void addUserColor(Color);
@@ -48,12 +49,16 @@ private:
     ws281x::TSPIDriver* spi_dev_1;
     static const unsigned N_PIXELS = 505;
     static const unsigned WORKING_AREA_LEDS = 151;
+    static const unsigned SHELF_LEDS = 148;
     //Vorne sind 505
-    //Hinten sind 71
+    //Hinten sind 151
+    //Regal sind 148
 
     unsigned speed = 600050;
-    ws281x::TWS2812B arr_pixels[N_PIXELS + WORKING_AREA_LEDS];
-    void flush();
+    ws281x::TWS2812B arr_pixels_front[N_PIXELS + WORKING_AREA_LEDS];
+    ws281x::TWS2812B arr_pixels_all[N_PIXELS + WORKING_AREA_LEDS + SHELF_LEDS];
+    void flushFront();
+    void flushAll();
     Color color{255, 255, 255};
     std::vector<Color> colorVector;
     bool patternChanged = true;

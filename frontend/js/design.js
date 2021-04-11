@@ -47,6 +47,12 @@ var colorPickerLedWorkingArea = new iro.ColorPicker("#colorpicker_led_working_ar
     display: "block",
 });
 
+var colorPickerLedShelf = new iro.ColorPicker("#colorpicker_led_shelf", {
+    width: 250,
+    color: "#f00",
+    display: "block",
+});
+
 var colorPickerCeilingKelvin = new iro.ColorPicker("#colorpicker_ceiling_kelvin", {
     layout: [
         { 
@@ -103,6 +109,18 @@ colorPickerLedStaticColor.on('input:end', function (color) {
 
 colorPickerLedWorkingArea.on('input:end', function (color) {
     let request = `${address}workingAreaColor?r=${color.rgb.r}&g=${color.rgb.g}&b=${color.rgb.b}`;
+    $.ajax({
+        url: request,
+        type: 'GET',
+        error: function (res) {
+            console.log(res);
+            M.toast({ html: 'Fehler!' })
+        }
+    });
+});
+
+colorPickerLedShelf.on('input:end', function (color) {
+    let request = `${address}shelfColor?r=${color.rgb.r}&g=${color.rgb.g}&b=${color.rgb.b}`;
     $.ajax({
         url: request,
         type: 'GET',

@@ -13,6 +13,7 @@ bool LedController::init() {
     spi_dev_1 = new ws281x::TSPIDriver("/dev/spidev0.0", ws281x::HZ_SPI_NEOPIXEL);
     patternMethod = &LedController::staticColor;
     setWorkingAreaColor(255, 255, 255);
+    setShelfColor(255, 255, 255);
     return true;
 }
 
@@ -22,26 +23,30 @@ void LedController::loop(){
         if (patternChanged) {
             ((*this).*patternMethod)();
         }
-        flush();
+        flushFront();
         mutex.unlock();
         std::this_thread::sleep_for(std::chrono::microseconds (speed));
     }
 }
 
-void LedController::flush(){
-    spi_dev_1->SendData(arr_pixels, sizeof(arr_pixels));
+void LedController::flushFront(){
+    spi_dev_1->SendData(arr_pixels_front, sizeof(arr_pixels_front));
+}
+
+void LedController::flushAll() {
+    spi_dev_1->SendData(arr_pixels_all, sizeof(arr_pixels_all));
 }
 
 
 /** Color methods **/
 void LedController::staticColor() {
     for(unsigned i = 0; i < N_PIXELS; i++)
-        arr_pixels[i].RGB(color.red, color.green, color.blue);
+        arr_pixels_front[i].RGB(color.red, color.green, color.blue);
     patternChanged = false;
 }
 void LedController::off(){
     for(unsigned i = 0; i < N_PIXELS; i++)
-        arr_pixels[i].RGB(0,0,0);
+        arr_pixels_front[i].RGB(0,0,0);
     patternChanged = false;
 }
 void LedController::rainbowStatic(){
@@ -53,7 +58,7 @@ void LedController::rainbowStatic(){
         angle += ((359/(double)(N_PIXELS))/100);
         if(angle>359) angle-=359;
         Color color = ColorConverter::hsvToRgb((int)angle,100,100);
-        arr_pixels[a].RGB(color.red, color.green, color.blue);
+        arr_pixels_front[a].RGB(color.red, color.green, color.blue);
         colorVector.push_back(color);
     }
     patternChanged = false;
@@ -71,7 +76,7 @@ void LedController::splitStatic() {
     unsigned length = N_PIXELS/userColors.size();
     auto color = userColors.begin();
     for (unsigned i = 1; i <= N_PIXELS; i++) {
-        arr_pixels[i-1].RGB(color->red, color->green, color->blue);
+        arr_pixels_front[i-1].RGB(color->red, color->green, color->blue);
         colorVector.push_back(*color);
         if (i % length == 0){
             color = std::next(color, 1);
@@ -96,7 +101,7 @@ void LedController::pulse() {
     }
     if (pulseCounter) {
         for (unsigned i = 1; i <= N_PIXELS; i++)
-            arr_pixels[i-1].RGB(colorVector[i].red, colorVector[i].green, colorVector[i].blue);
+            arr_pixels_front[i-1].RGB(colorVector[i].red, colorVector[i].green, colorVector[i].blue);
     } else {
         off();
     }
@@ -154,13 +159,26 @@ void LedController::setSpeed(unsigned s) {
 void LedController::shift(){
     std::rotate(colorVector.begin(), colorVector.begin() + 1, colorVector.end());
     for(int i = N_PIXELS-1; i >= 0; i--) {
-        arr_pixels[i].RGB(colorVector[i].red, colorVector[i].green, colorVector[i].blue);
+        arr_pixels_front[i].RGB(colorVector[i].red, colorVector[i].green, colorVector[i].blue);
     }
 }
 
 void LedController::setWorkingAreaColor(unsigned char red, unsigned char green, unsigned char blue) {
     mutex.lock();
-    for(unsigned i = N_PIXELS; i < N_PIXELS+WORKING_AREA_LEDS; i++) arr_pixels[i].RGB(red, green, blue);
+    for(unsigned i = N_PIXELS; i < N_PIXELS+WORKING_AREA_LEDS; i++) arr_pixels_front[i].RGB(red, green, blue);
     patternChanged = true;
+    mutex.unlock();
+}
+
+void LedController::setShelfColor(unsigned char red, unsigned char green, unsigned char blue) {
+    mutex.lock();
+
+    for (int i = 0; i < N_PIXELS + WORKING_AREA_LEDS; i++) {
+        arr_pixels_all[i] = arr_pixels_front[i];
+    }
+    for (int i = N_PIXELS+WORKING_AREA_LEDS; i < N_PIXELS + WORKING_AREA_LEDS + SHELF_LEDS; i++) {
+        arr_pixels_all[i].RGB(red, green, blue);
+    }
+    flushAll();
     mutex.unlock();
 }
