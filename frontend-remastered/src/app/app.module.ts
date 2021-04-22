@@ -8,15 +8,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AccordionModule } from 'primeng/accordion';
-import {TabMenuModule} from 'primeng/tabmenu';
+import { TabMenuModule } from 'primeng/tabmenu';
 import { FrontLightComponent } from './front-light/front-light.component';
 import { WorkLightComponent } from './work-light/work-light.component';
 import { ShelfLightComponent } from './shelf-light/shelf-light.component';
 import { CeilingLightComponent } from './ceiling-light/ceiling-light.component';
 import { PowerPlugsComponent } from './power-plugs/power-plugs.component';
+import { WorkLightService } from './work-light/work-light.service';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
-  declarations: [AppComponent, FrontLightComponent, WorkLightComponent, ShelfLightComponent, CeilingLightComponent, PowerPlugsComponent],
+  declarations: [
+    AppComponent,
+    FrontLightComponent,
+    WorkLightComponent,
+    ShelfLightComponent,
+    CeilingLightComponent,
+    PowerPlugsComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -24,9 +34,10 @@ import { PowerPlugsComponent } from './power-plugs/power-plugs.component';
     AccordionModule,
     MatIconModule,
     TabMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule,
   ],
-  providers: [],
+  providers: [WorkLightService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
