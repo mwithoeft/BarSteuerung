@@ -1,0 +1,28 @@
+<p-accordion expandIcon="" collapseIcon="">
+
+  <p-accordionTab>
+    <ng-template pTemplate="header"><mat-icon>lightbulb</mat-icon> Frontlicht</ng-template>
+    <ng-template pTemplate="content"><app-front-light></app-front-light></ng-template>
+  </p-accordionTab>
+  <p-accordionTab>
+    <ng-template pTemplate="header"><mat-icon>highlight</mat-icon> Arbeitslicht</ng-template>
+    <ng-template pTemplate="content"><app-work-light></app-work-light></ng-template>
+  </p-accordionTab>
+  <p-accordionTab>
+    <ng-template pTemplate="header"><mat-icon>local_bar</mat-icon> Regallicht</ng-template>
+    <ng-template pTemplate="content"><app-shelf-light></app-shelf-light></ng-template>
+  </p-accordionTab>
+  <p-accordionTab>
+    <ng-template pTemplate="header"><mat-icon>tungsten</mat-icon> Deckenlicht</ng-template>
+    <ng-template pTemplate="content"><app-ceiling-light></app-ceiling-light></ng-template>
+  </p-accordionTab>
+  <p-accordionTab>
+    <ng-template pTemplate="header"><mat-icon>power</mat-icon> Steckdosen</ng-template>
+    <ng-template pTemplate="content"><app-power-plugs></app-power-plugs></ng-template>
+  </p-accordionTab>
+
+</p-accordion>
+
+
+
+<router-outlet></router-outlet>
