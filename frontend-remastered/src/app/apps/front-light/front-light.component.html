@@ -1,0 +1,11 @@
+<p-tabView>
+    <p-tabPanel [header]="tabItems[0].label" [leftIcon]="tabItems[0].icon" [selected]="true">
+        <app-simple-pattern></app-simple-pattern>
+    </p-tabPanel>
+    <p-tabPanel [header]="tabItems[1].label" [leftIcon]="tabItems[1].icon">
+        <app-static-color></app-static-color>
+    </p-tabPanel>
+    <p-tabPanel [header]="tabItems[2].label" [leftIcon]="tabItems[2].icon">
+        <app-split-color></app-split-color>
+    </p-tabPanel>
+</p-tabView>

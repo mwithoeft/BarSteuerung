@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { Tab } from 'src/app/shared-apps/tab-interface';
+import { FrontLightService } from './front-light.service';
 
 @Component({
   selector: 'app-front-light',
@@ -7,17 +8,15 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./front-light.component.less'],
 })
 export class FrontLightComponent implements OnInit {
-  tabItems: MenuItem[];
-  activeTabItem: MenuItem;
+  tabItems: Tab[];
 
-  constructor() {}
+  constructor(private frontLightService: FrontLightService) {}
 
   ngOnInit() {
     this.tabItems = [
       { label: 'Einfache Muster', icon: 'pi pi-fw pi-chart-bar' },
       { label: 'Statische Farbe', icon: 'pi pi-fw pi-pencil' },
-      { label: 'Aufteilen', icon: 'pi pi-fw pi-percentage' }
+      { label: 'Aufteilen', icon: 'pi pi-fw pi-percentage' },
     ];
-    this.activeTabItem = this.tabItems[0];
   }
 }

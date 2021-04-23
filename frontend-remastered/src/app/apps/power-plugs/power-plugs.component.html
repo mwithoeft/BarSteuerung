@@ -1,0 +1,22 @@
+<p-toast position="bottom-right"></p-toast>
+
+<div class="p-grid p-fluid p-mb-2">
+    <div class="p-col-12 p-lg-6">
+        <button (click)="activateAll(true)" pButton pRipple type="button" class="button-label-uncentered"><mat-icon>flash_on</mat-icon><span class="label-centered">ALLE</span></button>
+    </div>
+    <div class="p-col-12 p-lg-6">
+        <button (click)="activateAll(false)" pButton pRipple type="button" class="button-label-uncentered"><mat-icon>flash_off</mat-icon><span class="label-centered">ALLE</span></button>
+    </div>
+    <div class="p-col-12 p-lg-6">
+        <button (click)="activateFront(true)" pButton pRipple type="button" class="button-label-uncentered" [disabled]="!buttons.frontTvOn"><mat-icon>flash_on</mat-icon><span class="label-centered">TV SUB</span></button>
+    </div>
+    <div class="p-col-12 p-lg-6">
+        <button (click)="activateFront(false)" pButton pRipple type="button" class="button-label-uncentered" [disabled]="!buttons.frontTvOff"><mat-icon>flash_off</mat-icon><span class="label-centered">TV SUB</span></button>
+    </div>
+    <div class="p-col-12 p-lg-6">
+        <button (click)="activateBack(true)" pButton pRipple type="button" class="button-label-uncentered" [disabled]="!buttons.backTvOn"><mat-icon>flash_on</mat-icon><span class="label-centered">TV HINTEN</span></button>
+    </div>
+    <div class="p-col-12 p-lg-6">
+        <button (click)="activateBack(false)" pButton pRipple type="button" class="button-label-uncentered" [disabled]="!buttons.backTvOff"><mat-icon>flash_off</mat-icon><span class="label-centered">TV HINTEN</span></button>
+    </div>
+</div>

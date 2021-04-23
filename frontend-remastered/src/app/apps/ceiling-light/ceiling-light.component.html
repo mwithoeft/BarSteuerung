@@ -1,0 +1,13 @@
+<div class="p-grid p-fluid p-mb-2">
+    <div class="p-col-12 p-lg-6">
+        <button (click)="selectAll(true)" pButton pRipple type="button" icon="pi pi-check" label="Alle"></button>
+    </div>
+    <div class="p-col-12 p-lg-6">
+        <button (click)="selectAll(false)" pButton pRipple type="button" icon="pi pi-times" label="Keine"></button>
+    </div>
+</div>
+
+<div class="p-grid">
+        <p-checkbox class="p-col-6 p-md-4 p-lg-3 p-xl-1" *ngFor="let box of checkBoxes" binary="true" [(ngModel)]="box.checked" [label]="box.name" value="{{box.index}}">
+        </p-checkbox>
+</div>
