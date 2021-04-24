@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { Toast } from 'src/app/shared-apps/toast-interface';
 import { WorkLightService } from './work-light.service';
 
 @Component({
@@ -16,26 +17,28 @@ export class WorkLightComponent {
   ) {}
 
   onColorChange(r: string, g: string, b: string) {
-    console.log("Test")
+    console.log('Test');
     this.workLightService.setWorkLightColor(r, g, b).subscribe(
-      () => this.pushSuccessToast('Farbe für Arbeitslicht gesetzt.'),
-      () => this.pushErrorToast('Farbe für Arbeitslicht nicht gesetzt!')
+      () =>
+        this.pushToast({
+          type: 'success',
+          summary: 'Erfolg',
+          message: 'Farbe für Arbeitslicht gesetzt.',
+        }),
+      () =>
+        this.pushToast({
+          type: 'error',
+          summary: 'Fehler',
+          message: 'Farbe für Arbeitslicht nicht gesetzt!',
+        })
     );
   }
 
-  pushSuccessToast(message: string) {
+  pushToast(toast: Toast) {
     this.messageService.add({
-      severity: 'success',
-      summary: 'Erfolg',
-      detail: `${message}`,
-    });
-  }
-
-  pushErrorToast(message: string) {
-    this.messageService.add({
-      severity: 'error',
-      summary: 'Fehler',
-      detail: `${message}`,
+      severity: toast.type,
+      summary: toast.summary,
+      detail: toast.message,
     });
   }
 }

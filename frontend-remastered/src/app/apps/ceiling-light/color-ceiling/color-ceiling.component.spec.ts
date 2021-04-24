@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SimplePatternComponent } from './simple-pattern.component';
+import { ColorCeilingComponent } from './color-ceiling.component';
 
-describe('SimplePatternComponent', () => {
-  let component: SimplePatternComponent;
-  let fixture: ComponentFixture<SimplePatternComponent>;
+describe('ColorCeilingComponent', () => {
+  let component: ColorCeilingComponent;
+  let fixture: ComponentFixture<ColorCeilingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SimplePatternComponent ]
+      declarations: [ ColorCeilingComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SimplePatternComponent);
+    fixture = TestBed.createComponent(ColorCeilingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

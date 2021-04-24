@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { Toast } from 'src/app/shared-apps/toast-interface';
 import { ShelfLightService } from './shelf-light.service';
 
 @Component({
@@ -17,24 +18,26 @@ export class ShelfLightComponent {
 
   onColorChange(r: string, g: string, b: string) {
     this.shelfLightService.setShelfLightColor(r, g, b).subscribe(
-      () => this.pushSuccessToast('Farbe für Regallicht gesetzt.'),
-      () => this.pushErrorToast('Farbe für Regallicht nicht gesetzt!')
+      () =>
+        this.pushToast({
+          type: 'success',
+          summary: 'Erfolg',
+          message: 'Farbe für Regallicht gesetzt.',
+        }),
+      () =>
+        this.pushToast({
+          type: 'error',
+          summary: 'Fehler',
+          message: 'Farbe für Regallicht nicht gesetzt!',
+        })
     );
   }
 
-  pushSuccessToast(message: string) {
+  pushToast(toast: Toast) {
     this.messageService.add({
-      severity: 'success',
-      summary: 'Erfolg',
-      detail: `${message}`,
-    });
-  }
-
-  pushErrorToast(message: string) {
-    this.messageService.add({
-      severity: 'error',
-      summary: 'Fehler',
-      detail: `${message}`,
+      severity: toast.type,
+      summary: toast.summary,
+      detail: toast.message,
     });
   }
 }

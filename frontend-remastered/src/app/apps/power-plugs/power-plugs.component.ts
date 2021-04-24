@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { Toast } from 'src/app/shared-apps/toast-interface';
 import { PowerPlugService } from './power-plug.service';
 
 @Component({
@@ -29,7 +30,11 @@ export class PowerPlugsComponent implements OnInit {
         this.changeTVBackButton(lines[1] == '1');
       },
       () =>
-        this.pushErrorToast('Steckdosenstatus konnte nicht abgefragt werden!')
+        this.pushToast({
+          type: 'error',
+          summary: 'Fehler',
+          message: 'Steckdosenstatus konnte nicht abgefragt werden!',
+        })
     );
   }
 
@@ -39,20 +44,36 @@ export class PowerPlugsComponent implements OnInit {
         () => {
           this.changeTVFrontButton(true);
           this.changeTVBackButton(true);
-          this.pushSuccessToast('Steckdosen erfolgreich angeschaltet.');
+          this.pushToast({
+            type: 'success',
+            summary: 'Erfolg',
+            message: 'Steckdosen erfolgreich angeschaltet.',
+          });
         },
         () =>
-          this.pushErrorToast('Steckdosen konnten nicht angeschaltet werden!')
+          this.pushToast({
+            type: 'error',
+            summary: 'Fehler',
+            message: 'Steckdosen konnten nicht angeschaltet werden!',
+          })
       );
     } else {
       this.powerPlugService.allOff().subscribe(
         () => {
           this.changeTVFrontButton(false);
           this.changeTVBackButton(false);
-          this.pushSuccessToast('Steckdosen erfolgreich ausgeschaltet.');
+          this.pushToast({
+            type: 'success',
+            summary: 'Erfolg',
+            message: 'Steckdosen erfolgreich ausgeschaltet.',
+          });
         },
         () =>
-          this.pushErrorToast('Steckdosen konnten nicht ausgeschaltet werden!')
+          this.pushToast({
+            type: 'error',
+            summary: 'Fehler',
+            message: 'Steckdosen konnten nicht ausgeschaltet werden!',
+          })
       );
     }
   }
@@ -62,19 +83,35 @@ export class PowerPlugsComponent implements OnInit {
       this.powerPlugService.frontOn().subscribe(
         () => {
           this.changeTVFrontButton(true);
-          this.pushSuccessToast('TV SUB erfolgreich angeschaltet.');
+          this.pushToast({
+            type: 'success',
+            summary: 'Erfolg',
+            message: 'TV SUB erfolgreich angeschaltet.',
+          });
         },
         () =>
-          this.pushErrorToast('TV SUB konnte nicht angeschaltet werden!')
+          this.pushToast({
+            type: 'error',
+            summary: 'Fehler',
+            message: 'TV SUB konnte nicht angeschaltet werden!',
+          })
       );
     } else {
       this.powerPlugService.frontOff().subscribe(
         () => {
           this.changeTVFrontButton(false);
-          this.pushSuccessToast('TV SUB erfolgreich ausgeschaltet.');
+          this.pushToast({
+            type: 'success',
+            summary: 'Erfolg',
+            message: 'TV SUB erfolgreich ausgeschaltet.',
+          });
         },
         () =>
-          this.pushErrorToast('TV SUB konnte nicht ausgeschaltet werden!')
+          this.pushToast({
+            type: 'error',
+            summary: 'Fehler',
+            message: 'TV SUB konnte nicht ausgeschaltet werden!',
+          })
       );
     }
   }
@@ -83,36 +120,44 @@ export class PowerPlugsComponent implements OnInit {
       this.powerPlugService.backOn().subscribe(
         () => {
           this.changeTVBackButton(true);
-          this.pushSuccessToast('TV HINTEN erfolgreich angeschaltet.');
+          this.pushToast({
+            type: 'success',
+            summary: 'Erfolg',
+            message: 'TV HINTEN erfolgreich angeschaltet.',
+          });
         },
         () =>
-          this.pushErrorToast('TV HINTEN konnte nicht angeschaltet werden!')
+          this.pushToast({
+            type: 'error',
+            summary: 'Fehler',
+            message: 'TV HINTEN konnte nicht angeschaltet werden!',
+          })
       );
     } else {
       this.powerPlugService.backOff().subscribe(
         () => {
           this.changeTVBackButton(false);
-          this.pushSuccessToast('TV HINTEN erfolgreich ausgeschaltet.');
+          this.pushToast({
+            type: 'success',
+            summary: 'Erfolg',
+            message: 'TV HINTEN erfolgreich ausgeschaltet.',
+          });
         },
         () =>
-          this.pushErrorToast('TV HINTEN konnte nicht ausgeschaltet werden!')
+          this.pushToast({
+            type: 'error',
+            summary: 'Fehler',
+            message: 'TV HINTEN konnte nicht ausgeschaltet werden!',
+          })
       );
     }
   }
 
-  pushSuccessToast(message: string) {
+  pushToast(toast: Toast) {
     this.messageService.add({
-      severity: 'success',
-      summary: 'Erfolg',
-      detail: `${message}`,
-    });
-  }
-
-  pushErrorToast(message: string) {
-    this.messageService.add({
-      severity: 'error',
-      summary: 'Fehler',
-      detail: `${message}`,
+      severity: toast.type,
+      summary: toast.summary,
+      detail: toast.message,
     });
   }
 

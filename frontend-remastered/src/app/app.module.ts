@@ -23,11 +23,14 @@ import { ColorPickerComponent } from './shared-apps/color-picker/color-picker.co
 import { ShelfLightService } from './apps/shelf-light/shelf-light.service';
 import { PowerPlugService } from './apps/power-plugs/power-plug.service';
 import { FrontLightService } from './apps/front-light/front-light.service';
-import { SimplePatternComponent } from './apps/front-light/simple-pattern/simple-pattern.component';
+import { SimplePatternFrontComponent } from './apps/front-light/simple-pattern-front/simple-pattern-front.component';
 import { StaticColorComponent } from './apps/front-light/static-color/static-color.component';
 import { SplitColorComponent } from './apps/front-light/split-color/split-color.component';
 import { CeilingLightService } from './apps/ceiling-light/ceiling-light.service';
 import { FormsModule } from '@angular/forms';
+import { SimplePatternCeilingComponent } from './apps/ceiling-light/simple-pattern-ceiling/simple-pattern-ceiling.component';
+import { WhiteCeilingComponent } from './apps/ceiling-light/white-ceiling/white-ceiling.component';
+import { ColorCeilingComponent } from './apps/ceiling-light/color-ceiling/color-ceiling.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +40,12 @@ import { FormsModule } from '@angular/forms';
     CeilingLightComponent,
     PowerPlugsComponent,
     ColorPickerComponent,
-    SimplePatternComponent,
+    SimplePatternFrontComponent,
     StaticColorComponent,
     SplitColorComponent,
+    SimplePatternCeilingComponent,
+    WhiteCeilingComponent,
+    ColorCeilingComponent,
   ],
   imports: [
     BrowserModule,

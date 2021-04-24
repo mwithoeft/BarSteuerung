@@ -1,13 +1,29 @@
+<p-toast position="bottom-right"></p-toast>
+
 <div class="p-grid p-fluid p-mb-2">
     <div class="p-col-12 p-lg-6">
-        <button (click)="selectAll(true)" pButton pRipple type="button" icon="pi pi-check" label="Alle"></button>
+        <button (click)="selectAll(true)" pButton pRipple type="button" icon="pi pi-check" label="ALLE"></button>
     </div>
     <div class="p-col-12 p-lg-6">
-        <button (click)="selectAll(false)" pButton pRipple type="button" icon="pi pi-times" label="Keine"></button>
+        <button (click)="selectAll(false)" pButton pRipple type="button" icon="pi pi-times" label="KEINE"></button>
     </div>
 </div>
 
 <div class="p-grid">
-        <p-checkbox class="p-col-6 p-md-4 p-lg-3 p-xl-1" *ngFor="let box of checkBoxes" binary="true" [(ngModel)]="box.checked" [label]="box.name" value="{{box.index}}">
-        </p-checkbox>
+    <p-checkbox class="p-col-6 p-md-4 p-lg-3 p-xl-1" *ngFor="let box of ceilingLightService.checkBoxes" binary="true"
+        [(ngModel)]="box.checked" [label]="box.name" value="{{box.index}}">
+    </p-checkbox>
 </div>
+
+
+<p-tabView>
+    <p-tabPanel [header]="tabItems[0].label" [leftIcon]="tabItems[0].icon" [selected]="true">
+        <app-simple-pattern-ceiling (emitToast)="pushToast($event)"></app-simple-pattern-ceiling>
+    </p-tabPanel>
+    <p-tabPanel [header]="tabItems[1].label" [leftIcon]="tabItems[1].icon">
+        <app-white-ceiling (emitToast)="pushToast($event)"></app-white-ceiling>
+    </p-tabPanel>
+    <p-tabPanel [header]="tabItems[2].label" [leftIcon]="tabItems[2].icon">
+        <app-color-ceiling (emitToast)="pushToast($event)"></app-color-ceiling>
+    </p-tabPanel>
+</p-tabView>

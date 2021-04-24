@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { Tab } from 'src/app/shared-apps/tab-interface';
+import { Toast } from 'src/app/shared-apps/toast-interface';
 import { CeilingLightService } from './ceiling-light.service';
-
-interface CheckBoxes {
-  name: string;
-  index: number;
-  checked: boolean;
-}
 
 @Component({
   selector: 'app-ceiling-light',
@@ -13,25 +10,32 @@ interface CheckBoxes {
   styleUrls: ['./ceiling-light.component.less'],
 })
 export class CeilingLightComponent implements OnInit {
-  checkBoxes: CheckBoxes[] = [
-    { name: 'Bar 1', index: 0, checked: false },
-    { name: 'Bar 2', index: 1, checked: false },
-    { name: 'Bar 3', index: 2, checked: false },
-    { name: 'Bar 4', index: 3, checked: false },
-    { name: 'Bar 5', index: 4, checked: false },
-    { name: 'Bar 6', index: 5, checked: false },
-    { name: 'Gang 1', index: 6, checked: false },
-    { name: 'Gang 2', index: 7, checked: false },
-    { name: 'Billiardlicht', index: 8, checked: false },
-  ];
+  tabItems: Tab[];
 
-  constructor(private ceilingLightService: CeilingLightService) {}
+  constructor(
+    private messageService: MessageService,
+    public ceilingLightService: CeilingLightService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tabItems = [
+      { label: 'Einfache Muster', icon: 'pi pi-fw pi-chart-bar' },
+      { label: 'Weiß', icon: 'pi pi-fw pi-flag' },
+      { label: 'Farbe', icon: 'pi pi-fw pi-microsoft' },
+    ];
+  }
 
   selectAll(selectAll: boolean) {
-    this.checkBoxes.forEach((checkbox) => {
+    this.ceilingLightService.checkBoxes.forEach((checkbox) => {
       checkbox.checked = selectAll;
+    });
+  }
+
+  pushToast(toast: Toast) {
+    this.messageService.add({
+      severity: toast.type,
+      summary: toast.summary,
+      detail: toast.message,
     });
   }
 }
