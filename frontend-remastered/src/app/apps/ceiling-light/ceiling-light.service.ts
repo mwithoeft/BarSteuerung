@@ -25,7 +25,7 @@ interface RequestParameters {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CeilingLightService {
   checkBoxes: CheckBoxes[] = [
