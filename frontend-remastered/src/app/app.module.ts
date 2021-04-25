@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
 import { SimplePatternCeilingComponent } from './apps/ceiling-light/simple-pattern-ceiling/simple-pattern-ceiling.component';
 import { WhiteCeilingComponent } from './apps/ceiling-light/white-ceiling/white-ceiling.component';
 import { ColorCeilingComponent } from './apps/ceiling-light/color-ceiling/color-ceiling.component';
+import { ColorPickerWhiteComponent } from './shared-apps/color-picker-white/color-picker-white.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { ColorCeilingComponent } from './apps/ceiling-light/color-ceiling/color-
     SimplePatternCeilingComponent,
     WhiteCeilingComponent,
     ColorCeilingComponent,
+    ColorPickerWhiteComponent,
   ],
   imports: [
     BrowserModule,

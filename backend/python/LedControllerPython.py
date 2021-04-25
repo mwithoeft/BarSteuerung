@@ -44,7 +44,7 @@ def bulb_white(bulb_string, kelvin, brightness):
             try:
                 if bulb == ceiling1:
                     kelvin = 2700 if kelvin < 2700 else kelvin
-                    if brightness == 0:
+                    if brightness == 1:
                         bulb.turn_off(LightType.Main)
                         bulb.turn_on(LightType.Ambient)
                     else:

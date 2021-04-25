@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Toast } from 'src/app/shared-apps/toast-interface';
 import { CeilingLightService } from '../ceiling-light.service';
 
@@ -7,12 +7,10 @@ import { CeilingLightService } from '../ceiling-light.service';
   templateUrl: './simple-pattern-ceiling.component.html',
   styleUrls: ['./simple-pattern-ceiling.component.less'],
 })
-export class SimplePatternCeilingComponent implements OnInit {
+export class SimplePatternCeilingComponent {
   @Output() emitToast: EventEmitter<Toast> = new EventEmitter();
 
   constructor(private ceilingLightService: CeilingLightService) {}
-
-  ngOnInit(): void {}
 
   request(
     mode:

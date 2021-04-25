@@ -17,7 +17,7 @@ export class ColorPickerComponent implements OnInit {
   ngOnInit(): void {
     this.colorPicker = new iro.ColorPicker('#color-picker-container');
     this.colorPicker.on('input:end', (color) =>
-      this.ngZone.run(() => this.onInputRGB.emit([color.rgb.r, color.rgb.g, color.rgb.b]))
+      this.ngZone.run(() => this.onInputRGB.emit([color.rgb.r, color.rgb.g, color.rgb.b, color.value]))
     );
   }
 
