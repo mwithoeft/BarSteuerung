@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class WorkLightService {
-  readonly address = 'http://192.168.178.100:7979';
+  readonly address = 'http://basementpi.fritz.box:7979';
 
   constructor(private http: HttpClient) {}
 

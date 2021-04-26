@@ -39,7 +39,7 @@ export class CeilingLightService {
     { name: 'Gang 2', index: 7, checked: false },
     { name: 'Billiardlicht', index: 8, checked: false },
   ];
-  readonly address = 'http://192.168.178.100:7979';
+  readonly address = 'http://basementpi.fritz.box:7979';
 
   constructor(private http: HttpClient) {}
 
