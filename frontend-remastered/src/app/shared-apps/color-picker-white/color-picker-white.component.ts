@@ -1,39 +1,55 @@
-import { convertUpdateArguments } from '@angular/compiler/src/compiler_util/expression_converter';
-import { Component, EventEmitter, NgZone, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import iro from '@jaames/iro';
+import { IroColorPicker } from '@jaames/iro/dist/ColorPicker';
 
-declare var iro: any;
 @Component({
   selector: 'app-color-picker-white',
   templateUrl: './color-picker-white.component.html',
   styleUrls: ['./color-picker-white.component.less'],
 })
-export class ColorPickerWhiteComponent implements OnInit {
+export class ColorPickerWhiteComponent implements AfterViewInit {
   @Output() onInputWhite: EventEmitter<any> = new EventEmitter();
 
-  colorPickerKelvin: any;
-  colorPickerBrightness: any;
+  @ViewChild('colorPickerContainerKelvin')
+  colorPickerContainerKelvin: ElementRef;
+  @ViewChild('colorPickerContainerBrightness')
+  colorPickerContainerBrightness: ElementRef;
+
+  colorPickerKelvin: IroColorPicker;
+  colorPickerBrightness: IroColorPicker;
 
   kelvin: number = 6500;
   brightness: number = 100;
 
   constructor(private ngZone: NgZone) {}
 
-  ngOnInit(): void {
-    this.colorPickerKelvin = new iro.ColorPicker('#color-picker-kelvin', {
-      layout: [
-        {
-          component: iro.ui.Slider,
-          options: {
-            sliderType: 'kelvin',
-            maxTemperature: 6500,
-            minTemperature: 2000,
+  ngAfterViewInit(): void {
+    this.colorPickerKelvin = iro.ColorPicker(
+      this.colorPickerContainerKelvin.nativeElement,
+      {
+        layout: [
+          {
+            component: iro.ui.Slider,
+            options: {
+              sliderType: 'kelvin',
+              maxTemperature: 6500,
+              minTemperature: 2000,
+            },
           },
-        },
-      ],
-    });
+        ],
+      }
+    );
 
-    this.colorPickerBrightness = new iro.ColorPicker(
-      '#color-picker-brightness',
+    this.colorPickerBrightness = iro.ColorPicker(
+      this.colorPickerContainerBrightness.nativeElement,
       {
         layout: [
           {

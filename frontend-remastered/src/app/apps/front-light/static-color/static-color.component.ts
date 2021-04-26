@@ -1,15 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Toast } from 'src/app/shared-apps/toast-interface';
+import { FrontLightService } from '../front-light.service';
 
 @Component({
   selector: 'app-static-color',
   templateUrl: './static-color.component.html',
   styleUrls: ['./static-color.component.less']
 })
-export class StaticColorComponent implements OnInit {
+export class StaticColorComponent {
+  @Output() emitToast: EventEmitter<Toast> = new EventEmitter();
 
-  constructor() { }
+  constructor(private frontLightService: FrontLightService) { }
 
-  ngOnInit(): void {
+  onColorChange(r: string, g: string, b: string){
+    this.frontLightService.setStaticColor(r, g, b).subscribe(
+      () =>
+        this.emitToast.emit({
+          type: 'success',
+          summary: 'Erfolg',
+          message: 'Farbe für Frontlicht gesetzt.',
+        }),
+      () =>
+        this.emitToast.emit({
+          type: 'error',
+          summary: 'Fehler',
+          message: 'Farbe für Frontlicht nicht gesetzt!',
+        })
+    );
   }
 
 }

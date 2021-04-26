@@ -1,1 +1,36 @@
-<p>split-color works!</p>
+<app-color-picker (onInputRGB)="setCurrentColor($event[0], $event[1], $event[2])"></app-color-picker>
+
+<div class="p-grid p-mb-2 padding-top">
+    <div class="front-light-selected-colors">
+        <span *ngFor="let color of selectedColors" class="button-padding">
+            <button [style.background-color]="backgroundColorString(color)" [style.border-color]="'transparent'" pButton
+                type="button" class="p-button-raised p-button-rounded" (click)="removeSelectedColor(color)"></button>
+        </span>
+    </div>
+</div>
+
+<div class="p-grid p-fluid p-mb-2 padding-top">
+    <div class="p-col-12">
+        <button (click)="addSelectedColor()" pButton pRipple type="button" class="button-label-uncentered">
+            <mat-icon>addchart</mat-icon><span class="label-centered">FARBE HINZUFÜGEN</span>
+        </button>
+    </div>
+    <div class="p-col-12 p-lg-6">
+        <button (click)="splitColorRequest('staticSplit')" pButton pRipple type="button"
+            class="button-label-uncentered">
+            <mat-icon>pause</mat-icon><span class="label-centered">SETZEN</span>
+        </button>
+    </div>
+    <div class="p-col-12 p-lg-6">
+        <button (click)="splitColorRequest('floatingSplit')" pButton pRipple type="button"
+            class="button-label-uncentered">
+            <mat-icon>double_arrow</mat-icon><span class="label-centered">SETZEN</span>
+        </button>
+    </div>
+    <div class="p-col-12">
+        <button (click)="splitColorRequest('pulse')" pButton pRipple type="button" class="button-label-uncentered">
+            <mat-icon>flash_on</mat-icon>
+            <mat-icon>flash_off</mat-icon><span class="label-centered">SETZEN</span>
+        </button>
+    </div>
+</div>

@@ -17,7 +17,6 @@ export class WorkLightComponent {
   ) {}
 
   onColorChange(r: string, g: string, b: string) {
-    console.log('Test');
     this.workLightService.setWorkLightColor(r, g, b).subscribe(
       () =>
         this.pushToast({

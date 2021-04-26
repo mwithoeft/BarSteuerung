@@ -1,11 +1,34 @@
+<p-toast position="bottom-right"></p-toast>
+
+<div class="p-grid p-fluid p-mb-2">
+    <div class="p-col-12 p-pb-4">
+        <button (click)="turnOff()" pButton pRipple type="button" class="button-label-uncentered">
+            <mat-icon>power_settings_new</mat-icon><span class="label-centered">AUSSCHALTEN</span>
+        </button>
+    </div>
+    <div class="p-col-4 flex flex-left">
+        <span>Langsam</span>
+    </div>
+    <div class="p-col-4 flex flex-center">
+        <span>GESCHWINDIGKEIT</span>
+    </div>
+    <div class="p-col-4 flex flex-right">
+        <span>Schnell</span>
+    </div>
+    <div class="p-col-12">
+        <p-slider (onSlideEnd)="setSpeed()" [(ngModel)]="speed" [min]="100" [max]="1200000"></p-slider>
+    </div>
+</div>
+
+
 <p-tabView>
     <p-tabPanel [header]="tabItems[0].label" [leftIcon]="tabItems[0].icon" [selected]="true">
-        <app-simple-pattern-front></app-simple-pattern-front>
+        <app-simple-pattern-front (emitToast)="pushToast($event)"></app-simple-pattern-front>
     </p-tabPanel>
     <p-tabPanel [header]="tabItems[1].label" [leftIcon]="tabItems[1].icon">
-        <app-static-color></app-static-color>
+        <app-static-color (emitToast)="pushToast($event)"></app-static-color>
     </p-tabPanel>
     <p-tabPanel [header]="tabItems[2].label" [leftIcon]="tabItems[2].icon">
-        <app-split-color></app-split-color>
+        <app-split-color (emitToast)="pushToast($event)"></app-split-color>
     </p-tabPanel>
 </p-tabView>

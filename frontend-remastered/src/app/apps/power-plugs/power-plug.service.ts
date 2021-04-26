@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PowerPlugService {
   readonly address = 'http://192.168.178.100:7979';
   readonly httpOptions: Object = {
-    responseType: 'text',
+    responseType: 'text'
   };
 
   constructor(private http: HttpClient) {}

@@ -19,6 +19,7 @@ import { PowerPlugsComponent } from './apps/power-plugs/power-plugs.component';
 import { WorkLightService } from './apps/work-light/work-light.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { SliderModule } from 'primeng/slider';
 import { ColorPickerComponent } from './shared-apps/color-picker/color-picker.component';
 import { ShelfLightService } from './apps/shelf-light/shelf-light.service';
 import { PowerPlugService } from './apps/power-plugs/power-plug.service';
@@ -32,6 +33,7 @@ import { SimplePatternCeilingComponent } from './apps/ceiling-light/simple-patte
 import { WhiteCeilingComponent } from './apps/ceiling-light/white-ceiling/white-ceiling.component';
 import { ColorCeilingComponent } from './apps/ceiling-light/color-ceiling/color-ceiling.component';
 import { ColorPickerWhiteComponent } from './shared-apps/color-picker-white/color-picker-white.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +62,8 @@ import { ColorPickerWhiteComponent } from './shared-apps/color-picker-white/colo
     ToastModule,
     CheckboxModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    SliderModule,
   ],
   providers: [
     WorkLightService,
