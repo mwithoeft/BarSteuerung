@@ -33,6 +33,7 @@ import { SimplePatternCeilingComponent } from './apps/ceiling-light/simple-patte
 import { WhiteCeilingComponent } from './apps/ceiling-light/white-ceiling/white-ceiling.component';
 import { ColorCeilingComponent } from './apps/ceiling-light/color-ceiling/color-ceiling.component';
 import { ColorPickerWhiteComponent } from './shared-apps/color-picker-white/color-picker-white.component';
+import { GeneralSettingsComponent } from './apps/general-settings/general-settings.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ColorPickerWhiteComponent } from './shared-apps/color-picker-white/colo
     WhiteCeilingComponent,
     ColorCeilingComponent,
     ColorPickerWhiteComponent,
+    GeneralSettingsComponent,
   ],
   imports: [
     BrowserModule,
